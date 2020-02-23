@@ -68,11 +68,11 @@ export const useProjects = () => {
           //docId is here so if we want to delete a proejct
           docId: project.id
         }));
-        if (JSON.stringify(allProjects) !== JSON.stringify(allProjects)) {
+        if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
         }
       });
   }, [projects]);
-
+  console.log("projects", projects);
   return { projects, setProjects };
 };
