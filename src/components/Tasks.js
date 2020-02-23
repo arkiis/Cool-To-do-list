@@ -14,21 +14,21 @@ export const Tasks = () => {
 
   let projectName = ""; //FIX THIS // project.name is undefined
 
-  if (projects && selectedProject && !collectedTasksExist(selectedProject)) {
-    projectName = getTitle(projects, selectedProject).name;
-  }
+  // if (projects && selectedProject && !collectedTasksExist(selectedProject)) {
+  //   projectName = getTitle(projects, selectedProject).name;
+  // }
 
-  if (collectedTasksExist(selectedProject) && selectedProject) {
-    projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-  }
+  // if (collectedTasksExist(selectedProject) && selectedProject) {
+  //   projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+  // }
 
-  if (
-    projects.length > 0 &&
-    selectedProject &&
-    !collectedTasksExist(selectedProject)
-  ) {
-    projectName = getTitle(projects, selectedProject).name;
-  }
+  // if (
+  //   projects.length > 0 &&
+  //   selectedProject &&
+  //   !collectedTasksExist(selectedProject)
+  // ) {
+  //   projectName = getTitle(projects, selectedProject).name;
+  // }
 
   useEffect(() => {
     document.title = `${projectName}: Todoist`;
