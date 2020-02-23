@@ -7,7 +7,7 @@ const Projects = ({ activeValue = null }) => {
   const [active, setActive] = useState(activeValue);
   const { setSelectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
-  console.log(projects);
+
   return (
     projects &&
     projects.map(project => (
@@ -20,16 +20,21 @@ const Projects = ({ activeValue = null }) => {
             ? "active sidebar__project"
             : "sidebar__project"
         }
-        onKeyDown={() => {
-          setActive(project.projectId);
-          setSelectedProject(project.projectId);
-        }}
-        onClick={() => {
-          setActive(project.projectId);
-          setSelectedProject(project.projectId);
-        }}
       >
-        <IndividualProject project={project} />
+        <div
+          role="button"
+          tabIndex={0}
+          onKeyDown={() => {
+            setActive(project.projectId);
+            setSelectedProject(project.projectId);
+          }}
+          onClick={() => {
+            setActive(project.projectId);
+            setSelectedProject(project.projectId);
+          }}
+        >
+          <IndividualProject project={project} />
+        </div>
       </li>
     ))
   );

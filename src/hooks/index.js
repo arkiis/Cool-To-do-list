@@ -73,6 +73,6 @@ export const useProjects = () => {
         }
       });
   }, [projects]);
-  console.log("projects", projects);
+
   return { projects, setProjects };
 };
