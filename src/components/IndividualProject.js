@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import { useProjectsValue, useSelectedProjectValue } from "../context";
 import { firebase } from "../firebase";
+import PropTypes from "prop-types";
 
 export const IndividualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
@@ -60,4 +61,8 @@ export const IndividualProject = ({ project }) => {
       </span>
     </>
   );
+};
+
+IndividualProject.propTypes = {
+  project: PropTypes.object.isRequired
 };

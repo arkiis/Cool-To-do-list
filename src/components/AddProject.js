@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { firebase } from "../firebase";
 import { generatePushId } from "../helpers";
 import { useProjectsValue } from "../context";
+import PropTypes from "prop-types";
 
 const AddProject = ({ shouldShow = false }) => {
   const [show, setShow] = useState(shouldShow);
@@ -74,3 +75,7 @@ const AddProject = ({ shouldShow = false }) => {
 };
 
 export default AddProject;
+
+AddProject.propTypes = {
+  shouldShow: PropTypes.bool
+};

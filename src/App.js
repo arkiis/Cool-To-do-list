@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Header from "./components/layout/Header";
 import Content from "./components/layout/Content";
 import { ProjectsProvider, SelectedProjectProvider } from "./context";
+import PropTypes from "prop-types";
 
 export const App = ({ darkModeDefault = false }) => {
   const [darkMode, setDarkMode] = useState(darkModeDefault);
@@ -18,4 +19,8 @@ export const App = ({ darkModeDefault = false }) => {
       </ProjectsProvider>
     </SelectedProjectProvider>
   );
+};
+
+App.propTypes = {
+  darkModeDefault: PropTypes.bool
 };
