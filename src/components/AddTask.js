@@ -81,6 +81,7 @@ export const AddTask = ({
                 <span
                   className="add-task__cancel-x"
                   data-testid="add-task-quick-cancel"
+                  aria-label="Cancel adding task"
                   onClick={() => {
                     setShowMain(false);
                     setShowProjectOverlay(false);
@@ -106,6 +107,7 @@ export const AddTask = ({
             className="add-task__content"
             data-testid="add-task-content"
             type="text"
+            aria-label="Enter your task"
             onChange={e => setTask(e.target.value)}
           />
           <button
@@ -128,6 +130,7 @@ export const AddTask = ({
                 setShowMain(false);
                 setShowProjectOverlay(false);
               }}
+              aria-label="Cancel adding a task"
             >
               Cancel
             </span>
