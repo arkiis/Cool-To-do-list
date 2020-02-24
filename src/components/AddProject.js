@@ -28,7 +28,7 @@ const AddProject = ({ shouldShow = false }) => {
   return (
     <div className="add-project" data-testid="add-project">
       {show && (
-        <div className="">
+        <div className="add-project__input" data-testid="add-project-inner">
           <input
             value={projectName}
             onChange={e => setProjectName(e.target.value)}
@@ -64,7 +64,7 @@ const AddProject = ({ shouldShow = false }) => {
         onClick={() => setShow(!show)}
         onKeyDown={() => setShow(!show)}
         role="button"
-        taxIndex={0}
+        tabIndex={0}
       >
         Add Project
       </span>

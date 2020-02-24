@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
-import { Checkbox } from "../components/Checkbox";
-import AddTask from "./AddTask";
-import { useTasks } from "../hooks/index";
+import React, { useEffect } from "react";
+import { Checkbox } from "./Checkbox";
+import { AddTask } from "./AddTask";
+import { useTasks } from "../hooks";
 import { collatedTasks } from "../constants";
-import { getTitle, getCollatedTitle, collectedTasksExist } from "../helpers";
-
+import { getTitle, getCollatedTitle, collatedTasksExist } from "../helpers";
 import { useSelectedProjectValue, useProjectsValue } from "../context";
 
 export const Tasks = () => {
@@ -12,23 +11,20 @@ export const Tasks = () => {
   const { projects } = useProjectsValue();
   const { tasks } = useTasks(selectedProject);
 
-  let projectName = ""; //FIX THIS // project.name is undefined
+  let projectName = "";
 
-  // if (projects && selectedProject && !collectedTasksExist(selectedProject)) {
-  //   projectName = getTitle(projects, selectedProject).name;
-  // }
+  if (collatedTasksExist(selectedProject) && selectedProject) {
+    projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+  }
 
-  // if (collectedTasksExist(selectedProject) && selectedProject) {
-  //   projectName = getCollatedTitle(collatedTasks, selectedProject).name;
-  // }
-
-  // if (
-  //   projects.length > 0 &&
-  //   selectedProject &&
-  //   !collectedTasksExist(selectedProject)
-  // ) {
-  //   projectName = getTitle(projects, selectedProject).name;
-  // }
+  if (
+    projects &&
+    projects.length > 0 &&
+    selectedProject &&
+    !collatedTasksExist(selectedProject)
+  ) {
+    projectName = getTitle(projects, selectedProject).name;
+  }
 
   useEffect(() => {
     document.title = `${projectName}: Todoist`;
@@ -41,7 +37,7 @@ export const Tasks = () => {
       <ul className="tasks__list">
         {tasks.map(task => (
           <li key={`${task.id}`}>
-            <Checkbox id={task.id} />
+            <Checkbox id={task.id} taskDesc={task.task} />
             <span>{task.task}</span>
           </li>
         ))}

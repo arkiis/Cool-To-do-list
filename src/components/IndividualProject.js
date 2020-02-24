@@ -7,7 +7,7 @@ import {
 } from "../context";
 import { firebase } from "../firebase";
 
-const IndividualProject = ({ project }) => {
+export const IndividualProject = ({ project }) => {
   const [showConfirm, setShowConfirm] = useState(false);
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
@@ -53,5 +53,3 @@ const IndividualProject = ({ project }) => {
     </>
   );
 };
-
-export default IndividualProject;

@@ -1,7 +1,8 @@
+/* eslint-disable no-nested-ternary */
 import { useState, useEffect } from "react";
-import { firebase } from "../firebase";
 import moment from "moment";
-import { collectedTasksExist } from "../helpers/index";
+import { firebase } from "../firebase";
+import { collatedTasksExist } from "../helpers";
 
 export const useTasks = selectedProject => {
   const [tasks, setTasks] = useState([]);
@@ -14,7 +15,7 @@ export const useTasks = selectedProject => {
       .where("userId", "==", "ffifg8347");
 
     unsubscribe =
-      selectedProject && !collectedTasksExist(selectedProject)
+      selectedProject && !collatedTasksExist(selectedProject)
         ? (unsubscribe = unsubscribe.where("projectId", "==", selectedProject))
         : selectedProject === "TODAY"
         ? (unsubscribe = unsubscribe.where(
@@ -41,7 +42,6 @@ export const useTasks = selectedProject => {
             )
           : newTasks.filter(task => task.archived !== true)
       );
-
       setArchivedTasks(newTasks.filter(task => task.archived !== false));
     });
 
@@ -50,7 +50,6 @@ export const useTasks = selectedProject => {
 
   return { tasks, archivedTasks };
 };
-//end of hook***************
 
 export const useProjects = () => {
   const [projects, setProjects] = useState([]);
@@ -65,9 +64,9 @@ export const useProjects = () => {
       .then(snapshot => {
         const allProjects = snapshot.docs.map(project => ({
           ...project.data(),
-          //docId is here so if we want to delete a proejct
           docId: project.id
         }));
+
         if (JSON.stringify(allProjects) !== JSON.stringify(projects)) {
           setProjects(allProjects);
         }

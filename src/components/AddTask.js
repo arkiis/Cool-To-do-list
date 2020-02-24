@@ -6,7 +6,7 @@ import { useSelectedProjectValue } from "../context";
 import { ProjectOverlay } from "./ProjectOverlay";
 import { TaskDate } from "./TaskDate";
 
-const AddTask = ({
+export const AddTask = ({
   showAddTaskMain = true,
   shouldShowMain = false,
   showQuickAddTask,
@@ -151,5 +151,3 @@ const AddTask = ({
     </div>
   );
 };
-
-export default AddTask;

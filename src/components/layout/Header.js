@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { FaPizzaSlice } from "react-icons/fa";
 import { Logo } from "../../assets/profile-icon-grey.jpg";
-import AddTask from "../AddTask";
+import { AddTask } from "../AddTask";
 
 const Header = ({ darkMode, setDarkMode }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
