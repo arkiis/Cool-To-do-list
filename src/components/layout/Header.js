@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FaPizzaSlice } from "react-icons/fa";
+import { FaMoon, FaSun } from "react-icons/fa";
 import PropTypes from "prop-types";
 
 import { AddTask } from "../AddTask";
@@ -39,7 +39,7 @@ const Header = ({ darkMode, setDarkMode }) => {
                 onClick={() => setDarkMode(!darkMode)}
                 onKeyDown={() => setDarkMode(!darkMode)}
               >
-                <FaPizzaSlice />
+                {darkMode ? <FaSun /> : <FaMoon />}
               </button>
             </li>
           </ul>

@@ -138,13 +138,122 @@ $generic-bg: #db4c3f;
 /* Darkmode
      ============================================ */
 .darkmode {
+  background-color: #1c1621;
   header {
     -webkit-box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
     box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.15);
-    background-color: #282828;
+    background-color: #1b1b1e;
     border-color: transparent;
+
+    .add-task__main {
+      background-color: #282828;
+      color: white;
+    }
+    .task-date {
+      background-color: #1b1b1e;
+
+      li {
+        color: white;
+        border-bottom: 1px solid #1c1621;
+
+        &:hover {
+          background-color: #282828;
+        }
+      }
+    }
+  }
+
+  .content {
+    .tasks {
+      background-color: #1b1b1e;
+      border-right: 1px solid #1c1621;
+      color: white;
+
+      &__list li {
+        color: white;
+        border-bottom: 1px solid #282828;
+        margin-bottom: 10px;
+        padding-bottom: 3px;
+      }
+      .task-date {
+        background-color: #1b1b1e;
+
+        li {
+          color: white;
+          border-bottom: 1px solid #1c1621;
+
+          &:hover {
+            background-color: #282828;
+          }
+        }
+      }
+    }
+    .sidebar {
+      background-color: #1c1621;
+      border-right: #1c1621;
+      color: white;
+
+      &__middle {
+        span {
+          color: white;
+        }
+        h2 {
+          color: white;
+        }
+      }
+      .sidebar__project {
+        &:hover {
+          background-color: #282828;
+        }
+      }
+      .sidebar__projects {
+        .active {
+          background-color: #282828;
+        }
+      }
+    }
+    .project-delete-modal {
+      &__inner {
+        background-color: #1b1b1e;
+      }
+    }
+  }
+  body {
+    background-color: #282828;
+    color: white;
+  }
+  .sidebar__generic {
+    .active {
+      background-color: #282828;
+    }
+    li {
+      color: white;
+
+      &:hover {
+        background-color: #282828;
+      }
+      div {
+        &:hover {
+          background-color: #282828;
+        }
+      }
+    }
+  }
+
+  .project-overlay {
+    background-color: #1b1b1e;
+
+    &__list li {
+      color: white;
+      border-bottom: 1px solid #1c1621;
+
+      &:hover {
+        background-color: #282828;
+      }
+    }
   }
 }
+//END OF DARKMODE***********
 
 /* Header
      ============================================ */
@@ -646,7 +755,7 @@ header {
   @include box-overlay();
   background-color: #fff;
   width: 200px;
-  top: 80%;
+  top: 100%;
   right: 0;
 
   &__list li {
@@ -672,7 +781,7 @@ header {
 .project-overlay {
   @include box-overlay();
   background-color: white;
-  top: 80%;
+  top: 100%;
   right: 0;
 
   &__list li {

@@ -120,6 +120,11 @@ export const AddTask = ({
                 ? addTask() && setShowQuickAddTask(false)
                 : addTask()
             }
+            onKeyDown={() =>
+              showQuickAddTask
+                ? addTask() && setShowQuickAddTask(false)
+                : addTask()
+            }
           >
             Add Task
           </button>
