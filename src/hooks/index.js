@@ -75,3 +75,20 @@ export const useProjects = () => {
 
   return { projects, setProjects };
 };
+
+//Fetch hook
+export const useFetchAPI = endpoint => {
+  const [value, setValue] = useState([]);
+
+  useEffect(() => {
+    fetching();
+  }, [fetching]);
+
+  const fetching = async () => {
+    let endpointValue = await fetch(endpoint);
+    let response = await endpointValue.json();
+    setValue(response);
+  };
+
+  return value;
+};
