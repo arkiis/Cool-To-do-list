@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 import Header from "./components/layout/Header";
+import { NotificationContainer } from "react-notifications";
+import { Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+
 import Content from "./components/layout/Content";
 import { ProjectsProvider, SelectedProjectProvider } from "./context";
 import PropTypes from "prop-types";

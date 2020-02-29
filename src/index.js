@@ -8,7 +8,11 @@ import "./App.scss";
 
 render(
   <Provider store={store}>
-    <App />
+    <Router>
+      <Switch>
+        <Route path="/" component={App} />
+      </Switch>
+    </Router>
   </Provider>,
   document.getElementById("root")
 );
