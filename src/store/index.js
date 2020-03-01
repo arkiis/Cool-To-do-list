@@ -3,6 +3,7 @@ import thunk from "redux-thunk";
 import { firebase } from "../firebase";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
 import { reduxFirestore, getFirestore } from "redux-firestore";
+import logger from "redux-logger";
 
 import rootReducer from "./reducers";
 
@@ -23,7 +24,10 @@ const store = createStore(
   composeEnhancers(
     reactReduxFirebase(firebase, rrConfig),
     reduxFirestore(firebase),
-    applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore }))
+    applyMiddleware(
+      thunk.withExtraArgument({ getFirebase, getFirestore }),
+      logger
+    )
   )
 );
 

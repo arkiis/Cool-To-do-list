@@ -52,6 +52,7 @@ const Header = ({ darkMode, setDarkMode, loggedIn }) => {
   } else {
     links = (
       <>
+        <NavLinks link="/premium">Premium</NavLinks>
         <NavLinks link="/signin">Login</NavLinks>
         <NavLinks link="/signup">Signup</NavLinks>
       </>
@@ -61,10 +62,10 @@ const Header = ({ darkMode, setDarkMode, loggedIn }) => {
   return (
     <header className="header" data-testid="header">
       <nav>
-        <ul>
-          <Logo />
-          <div className="settings">{links}</div>
-        </ul>
+        <Logo />
+        <div className="settings">
+          <ul>{links}</ul>
+        </div>
       </nav>
     </header>
   );

@@ -1,10 +1,8 @@
 import React from "react";
 // Redux
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import LinearProgress from "@material-ui/core/LinearProgress";
-import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { labels } from "../../constants/index";
@@ -49,6 +47,7 @@ const Register = ({ signUp, loading, error }) => {
       }}
     >
       {({ isSubmitting, isValid }) => (
+        //Creating a signup modal
         <div style={{ marginTop: "240px" }}>
           <div>
             <Form>
@@ -78,20 +77,21 @@ const Register = ({ signUp, loading, error }) => {
               />
               <Field
                 type="checkbox"
-                label={labels.acceptedTerms}
+                label={labels.terms}
                 name="acceptedTerms"
                 component={Input}
               />
-              <button
-                disabled={!isValid || isSubmitting}
-                loading={loading ? "Signing up..." : null}
-                type="submit"
-              >
+              <button disabled={!isValid || isSubmitting} type="submit">
                 Create My Account
               </button>
+              {loading && (
+                <div style={{ textAlign: "center" }}>
+                  <LinearProgress />
+                </div>
+              )}
               <div>
                 <Message error show={error}>
-                  {error}
+                  {NotificationManager.error({ error })}
                 </Message>
               </div>
             </Form>

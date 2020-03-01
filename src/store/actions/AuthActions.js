@@ -1,5 +1,3 @@
-import { firebase } from "../../firebase";
-
 import { NotificationManager } from "react-notifications";
 import {
   LOGIN_USER,
@@ -14,18 +12,6 @@ import {
 /**
  * Redux Action to SignIn User with Firebase
  */
-// export const signinUserInFirebase = (user, history) => dispatch => {
-// dispatch({ type: LOGIN_USER });
-// firebase
-// .auth()
-// .signInWithEmailAndPassword(user.email, user.password)
-// .then(res => {
-//     dispatch({
-//         type: LOGIN_USER_SUCCESS,
-//         payload:
-//     })
-// })
-// }
 
 /**
  * Redux Action to signup user in Firebase
@@ -56,9 +42,7 @@ export const signUp = data => async (
     dispatch({
       type: SIGNUP_USER_SUCCESS
     });
-    NotificationManager.success(`You're In!🥳`);
   } catch (err) {
     dispatch({ type: SIGNUP_USER_FAILURE, payload: err.message });
-    NotificationManager.error(err.message);
   }
 };
