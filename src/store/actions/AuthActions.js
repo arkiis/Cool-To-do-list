@@ -30,27 +30,36 @@ import {
 /**
  * Redux Action to signup user in Firebase
  */
-export const signupUserInFirebase = (user, history) => dispatch => {
-  console.log(user);
+export const signUp = data => async (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  const firebase = getFirebase();
+  const firestore = getFirestore();
   dispatch({ type: SIGNUP_USER });
-  firebase
-    .auth()
-    .createUserWithEmailAndPassword(user.email, user.password)
-    .then(success => {
-      firebase
-        .firestore()
-        .collection("users")
-        .doc(success.uid)
-        .set({
-          email: success.email,
-          createdAt: new Date()
-        });
-      dispatch({ type: SIGNUP_USER_SUCCESS });
-      history.push("/");
-      NotificationManager.success("Account Created Successfully");
-    })
-    .catch(error => {
-      dispatch({ type: SIGNUP_USER_FAILURE });
-      NotificationManager.error(error.message);
+  try {
+    const res = await firebase
+      .auth()
+      .createUserWithEmailAndPassword(data.email, data.password);
+
+    // Send the verfication email
+    const user = firebase.auth().currentUser;
+    await user.sendEmailVerification();
+
+    await firestore
+      .collection("users")
+      .doc(res.user.uid)
+      .set({
+        firstName: data.firstName,
+        lastName: data.lastName
+      });
+    dispatch({
+      type: SIGNUP_USER_SUCCESS
     });
+    NotificationManager.success(`You're In!🥳`);
+  } catch (err) {
+    dispatch({ type: SIGNUP_USER_FAILURE, payload: err.message });
+    NotificationManager.error(err.message);
+  }
 };
