@@ -16,8 +16,8 @@ const Layout = ({ darkModeDefault = false, children, loggedIn }) => {
             loggedIn={loggedIn}
             darkMode={darkMode}
             setDarkMode={setDarkMode}
-          />
-          {children}
+          />{" "}
+          <div className="MainContent">{children}</div>
         </main>
         ;
       </ProjectsProvider>
