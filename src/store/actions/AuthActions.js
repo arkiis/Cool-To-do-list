@@ -51,8 +51,7 @@ export const signUp = data => async (
       .collection("users")
       .doc(res.user.uid)
       .set({
-        firstName: data.firstName,
-        lastName: data.lastName
+        userName: data.userName
       });
     dispatch({
       type: SIGNUP_USER_SUCCESS

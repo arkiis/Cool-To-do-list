@@ -5,7 +5,6 @@ import { Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Register from "./components/Auth/Register";
 import Content from "./components/layout/Content";
-import { ProjectsProvider, SelectedProjectProvider } from "./context";
 import PropTypes from "prop-types";
 import Layout from "./components/layout";
 import VerifyEmail from "./components/Auth/VerifyEmail";
@@ -23,17 +22,17 @@ const App = ({ loggedIn, emailVerified }) => {
     routes = (
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <Route exact path="/" component={Content} />
-          <Redirect to="/" />
+          <Route exact path="/home" component={Content} />
+          <Redirect to="/home" />
         </Switch>
       </Suspense>
     );
   } else {
     routes = (
       <Switch>
-        <Route exact path="/home" component={Home} />
+        <Route exact path="/" component={Home} />
         <Route exact path="/signup" component={Register} />
-        <Redirect to="/home" />
+        <Redirect to="/" />
       </Switch>
     );
   }
