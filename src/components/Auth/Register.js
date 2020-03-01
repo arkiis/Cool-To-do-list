@@ -7,6 +7,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
+import { labels } from "../../constants/index";
 // Actions
 import { signUp } from "../../store/actions";
 import Input from "../Forms/Input.js";
@@ -25,7 +26,10 @@ const SignUpSchema = Yup.object().shape({
     .min(8, "Too short"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("password"), null], `Password doesn't match`)
-    .required("You need to confirm your password")
+    .required("You need to confirm your password"),
+  acceptedTerms: Yup.boolean()
+    .required("Required")
+    .oneOf([true], "You must accept the terms and conditions")
 });
 
 const Register = ({ signUp, loading, error }) => {
@@ -45,14 +49,39 @@ const Register = ({ signUp, loading, error }) => {
       }}
     >
       {({ isSubmitting, isValid }) => (
-        <div>
+        <div style={{ marginTop: "240px" }}>
           <div>
             <Form>
-              <Field type="text" name="userName" component={Input} />
-              <Field type="email" name="email" component={Input} />
-              <Field type="password" name="password" component={Input} />
-              <Field type="password" name="confirmPassword" component={Input} />
-              <Field type="checkbox" name="acceptedTerms" component={Input} />
+              <Field
+                type="text"
+                label={labels.username}
+                name="userName"
+                component={Input}
+              />
+              <Field
+                type="email"
+                label={labels.email}
+                name="email"
+                component={Input}
+              />
+              <Field
+                type="password"
+                label={labels.password}
+                name="password"
+                component={Input}
+              />
+              <Field
+                type="password"
+                label={labels.confirmPassword}
+                name="confirmPassword"
+                component={Input}
+              />
+              <Field
+                type="checkbox"
+                label={labels.acceptedTerms}
+                name="acceptedTerms"
+                component={Input}
+              />
               <button
                 disabled={!isValid || isSubmitting}
                 loading={loading ? "Signing up..." : null}
