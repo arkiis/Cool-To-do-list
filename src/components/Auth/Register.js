@@ -8,25 +8,18 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import KeyboardBackspaceIcon from "@material-ui/icons/KeyboardBackspace";
 
 // Actions
-import { signupUserInFirebase } from "../../store/actions";
+import { signUp } from "../../store/actions";
 
-const Register = () => {
-  return <div></div>;
+const Register = ({ signUp, loading, error }) => {
+  return <div>hi</div>;
 };
 
-const mapStateToProps = ({ authUser }) => {
-  const { loading } = authUser;
-
-  return { loading };
-};
-
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators(
-    {
-      signupUserInFirebase: signupUserInFirebase
-    },
-    dispatch
-  );
+const mapStateToProps = ({ auth }) => ({
+  loading: auth.loading,
+  error: auth.error
+});
+const mapDispatchToProps = {
+  signUp: signUp
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);
