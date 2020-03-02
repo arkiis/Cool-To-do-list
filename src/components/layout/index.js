@@ -10,7 +10,13 @@ const Layout = ({ darkModeDefault = false, children, loggedIn }) => {
       <ProjectsProvider>
         <main
           data-testid="application"
-          className={darkMode ? "darkmode" : undefined}
+          className={
+            darkMode
+              ? "darkmode"
+              : undefined || !loggedIn.uid
+              ? "signedOutHeader"
+              : undefined
+          }
         >
           <Header
             loggedIn={loggedIn}

@@ -62,7 +62,7 @@ const Header = ({ darkMode, setDarkMode, loggedIn }) => {
   return (
     <header className="header" data-testid="header">
       <nav>
-        <Logo />
+        <Logo loggedIn={loggedIn} />
         <div className="settings">
           <ul>{links}</ul>
         </div>

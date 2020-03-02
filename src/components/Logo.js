@@ -1,9 +1,13 @@
 import React from "react";
 
-const Logo = () => {
+const Logo = ({ loggedIn }) => {
   return (
     <div className="logo">
-      <img src="/image/logo.png" alt="Todoist" />
+      {loggedIn.uid ? (
+        <img src="/image/logo.png" alt="Todoist" />
+      ) : (
+        <img src="/image/home-logo.svg" alt="Todoist" />
+      )}
     </div>
   );
 };
