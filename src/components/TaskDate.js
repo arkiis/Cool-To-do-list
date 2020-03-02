@@ -7,7 +7,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
   showTaskDate && (
     <div className="task-date" data-testid="task-date-overlay">
       <ul className="task-date__list">
-        <li>
+        <li className="task-date__li">
           <div
             onClick={() => {
               setShowTaskDate(false);
@@ -27,7 +27,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             <span>Today</span>
           </div>
         </li>
-        <li data-testid="task-date-tomorrow">
+        <li className="task-date__li" data-testid="task-date-tomorrow">
           <div
             onClick={() => {
               setShowTaskDate(false);
@@ -54,7 +54,7 @@ export const TaskDate = ({ setTaskDate, showTaskDate, setShowTaskDate }) =>
             <span>Tomorrow</span>
           </div>
         </li>
-        <li data-testid="task-date-next-week">
+        <li className="task-date__li" data-testid="task-date-next-week">
           <div
             onClick={() => {
               setShowTaskDate(false);

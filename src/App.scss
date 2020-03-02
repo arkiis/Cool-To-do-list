@@ -395,9 +395,6 @@ header {
       &.logo {
         padding-left: 8px;
         grid-area: 1 / 1;
-
-        img {
-        }
       }
 
       &.settings {
@@ -855,6 +852,11 @@ header {
   width: 200px;
   top: 100%;
   right: 0;
+
+  &__li {
+    width: unset !important;
+    height: unset !important;
+  }
 
   &__list li {
     @include task-item();
