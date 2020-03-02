@@ -6,12 +6,13 @@ const Home = () => {
       <img
         className="home-hero"
         width="1158"
-        src="/image/arabica-6.png"
+        src="/image/download.png"
         alt="girl writing on giant paper"
       />
       <section>
-        <div>
-          <h1>Organize your work</h1>
+        <div className="heroWrapper">
+          <h1 className="homeHeading">Organize your work</h1>
+          <a>Get Started</a>
         </div>
       </section>
     </div>

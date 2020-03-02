@@ -50,6 +50,13 @@ $generic-bg: #db4c3f;
   border-radius: 3px;
 }
 
+@mixin heading {
+  font-weight: 600;
+  font-size: 5.25rem;
+  line-height: 1.05;
+  letter-spacing: -0.04em;
+}
+
 @mixin va($va-align: center) {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -267,9 +274,24 @@ $generic-bg: #db4c3f;
 
   .home-hero {
     position: absolute;
-    top: 280px;
+    top: 210px;
     left: 50%;
     transform: translateX(-50%);
+  }
+  .heroWrapper {
+    margin-top: 12rem;
+    margin-bottom: -10rem;
+    position: relative;
+    text-align: center;
+    h1 {
+      @include heading;
+    }
+    a {
+      @include btn("none");
+      padding: 0.5em 1.15em !important;
+      font-size: 1.3125rem !important;
+      border-radius: 0.5em !important;
+    }
   }
 }
 
