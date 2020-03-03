@@ -8,9 +8,10 @@ import * as Yup from "yup";
 import { labels } from "../../constants/index";
 // Actions
 import { signUp } from "../../store/actions";
+import { hideModal } from "../../store/actions/ModalActions";
 import Input from "../Forms/Input.js";
 import Message from "../Message";
-
+import Modal from "../Modal";
 const SignUpSchema = Yup.object().shape({
   userName: Yup.string()
     .required("You need a username silly!")
@@ -30,7 +31,14 @@ const SignUpSchema = Yup.object().shape({
     .oneOf([true], "You must accept the terms and conditions")
 });
 
-const Register = ({ signUp, loading, error }) => {
+const Register = ({ signUp, loading, error, hideModal }) => {
+  const onClose = () => {
+    hideModal();
+  };
+  const onSubmit = () => {
+    hideModal();
+  };
+
   return (
     <Formik
       initialValues={{
@@ -44,59 +52,61 @@ const Register = ({ signUp, loading, error }) => {
       onSubmit={async (values, { setSubmitting }) => {
         await signUp(values);
         setSubmitting(false);
+        onSubmit();
       }}
     >
       {({ isSubmitting, isValid }) => (
         //Creating a signup modal
-        <div style={{ marginTop: "240px" }}>
-          <div>
-            <Form>
-              <Field
-                type="text"
-                label={labels.username}
-                name="userName"
-                component={Input}
-              />
-              <Field
-                type="email"
-                label={labels.email}
-                name="email"
-                component={Input}
-              />
-              <Field
-                type="password"
-                label={labels.password}
-                name="password"
-                component={Input}
-              />
-              <Field
-                type="password"
-                label={labels.confirmPassword}
-                name="confirmPassword"
-                component={Input}
-              />
+        <Modal title="Sign up" onClose={onClose}>
+          <Form className="signUpWrapper">
+            <Field
+              type="text"
+              label={labels.username}
+              name="userName"
+              component={Input}
+            />
+            <Field
+              type="email"
+              label={labels.email}
+              name="email"
+              component={Input}
+            />
+            <Field
+              type="password"
+              label={labels.password}
+              name="password"
+              component={Input}
+            />
+            <Field
+              type="password"
+              label={labels.confirmPassword}
+              name="confirmPassword"
+              component={Input}
+            />
+            <div className="authCheckbox">
               <Field
                 type="checkbox"
                 label={labels.terms}
                 name="acceptedTerms"
                 component={Input}
               />
-              <button disabled={!isValid || isSubmitting} type="submit">
-                Create My Account
-              </button>
-              {loading && (
-                <div style={{ textAlign: "center" }}>
-                  <LinearProgress />
-                </div>
-              )}
-              <div>
-                <Message error show={error}>
-                  {NotificationManager.error({ error })}
-                </Message>
+            </div>
+
+            <button disabled={!isValid || isSubmitting} type="submit">
+              Create My Account
+            </button>
+            {loading && (
+              <div style={{ textAlign: "center" }}>
+                <LinearProgress />
               </div>
-            </Form>
-          </div>
-        </div>
+            )}
+            <div>
+              <Message error show={error}>
+                {NotificationManager.error({ error })}
+              </Message>
+            </div>
+          </Form>
+        </Modal>
       )}
     </Formik>
   );
@@ -107,7 +117,8 @@ const mapStateToProps = ({ auth }) => ({
   error: auth.error
 });
 const mapDispatchToProps = {
-  signUp: signUp
+  signUp: signUp,
+  hideModal: () => hideModal()
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

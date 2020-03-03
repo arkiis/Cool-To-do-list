@@ -8,3 +8,9 @@ export const SIGNUP_USER_FAILURE = "SIGNUP_USER_FAILURE";
 export const VERIFY_START = "VERIFY_START";
 export const VERIFY_SUCCESS = "VERIFY_SUCCESS";
 export const VERIFY_FAIL = "VERIFY_FAIL";
+
+//Modal actionTypes
+export const SHOW_MODAL = "SHOW_MODAL";
+export const HIDE_MODAL = "HIDE_MODAL";
+export const LOGIN_MODAL = "LOGIN_MODAL";
+export const SIGNUP_MODAL = "SIGNUP_MODAL";

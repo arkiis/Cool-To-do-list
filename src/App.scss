@@ -635,6 +635,98 @@ header {
   }
 }
 
+/* LABEL
+     ============================================ */
+.label {
+  display: block;
+  font-weight: bold;
+  font-size: 13px;
+  margin-bottom: 5px;
+}
+.authCheckbox {
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-right: 10px;
+  input {
+    flex: 3;
+  }
+}
+
+/* SIGNUP
+     ============================================ */
+.signUpWrapper {
+  width: 350px;
+  height: 40%;
+  background-color: #fff;
+
+  button {
+    @include btn(100%);
+  }
+
+  .input {
+    font-size: 13px;
+    font-weight: normal;
+    width: 100%;
+    padding: 0.75em 1em;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    margin-bottom: 1em;
+  }
+  .errorInput {
+    color: $generic-bg;
+    padding: 0.25em 0;
+    align-items: center;
+    display: flex;
+    font-size: 13px;
+  }
+}
+
+/* AUTH MODAL
+     ============================================ */
+.auth-modal-overlay {
+  opacity: 1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1000;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.24);
+
+  .auth-modal-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    padding: 2rem;
+    border-radius: 6px;
+    flex-direction: column;
+    background-color: #fff;
+
+    .auth-modal-close {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      h6 {
+        font-size: 0.75rem;
+        line-height: 1.35;
+        letter-spacing: 0.04em;
+        font-weight: 400;
+        text-transform: uppercase;
+      }
+      span {
+        color: $gray;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
 // Show Confirm Delete *****************
 
 .project-delete-modal {

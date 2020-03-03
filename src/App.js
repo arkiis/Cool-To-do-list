@@ -9,6 +9,7 @@ import PropTypes from "prop-types";
 import Layout from "./components/layout";
 import VerifyEmail from "./components/Auth/VerifyEmail";
 import Home from "./pages/Home";
+import ModalContainer from "./components/ModalContainer";
 
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
@@ -37,7 +38,12 @@ const App = ({ loggedIn, emailVerified }) => {
     );
   }
 
-  return <Layout>{routes}</Layout>;
+  return (
+    <Layout>
+      {routes}
+      <ModalContainer />
+    </Layout>
+  );
 };
 
 App.propTypes = {

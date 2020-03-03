@@ -1,12 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavLinks = ({ children, link }) => {
+const NavLinks = ({ children, link, showSignupMenu }) => {
   return (
-    <li>
-      <NavLink exact activeClassName="active" to={link} href={link}>
-        {children}
-      </NavLink>
+    <li onClick={showSignupMenu}>
+      <a>{children}</a>
     </li>
   );
 };

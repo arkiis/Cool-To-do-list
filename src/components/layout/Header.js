@@ -4,12 +4,22 @@ import PropTypes from "prop-types";
 import Logo from "../Logo";
 import { AddTask } from "../AddTask";
 import NavLinks from "../NavLinks";
+import { connect } from "react-redux";
+import { showModal } from "../../store/actions/ModalActions";
+import { LOGIN_MODAL, SIGNUP_MODAL } from "../../store/actions/type";
 
-const Header = ({ darkMode, setDarkMode, loggedIn }) => {
+const Header = ({ darkMode, setDarkMode, loggedIn, showModal }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
   let links;
+
+  const showLoginMenu = () => {
+    showModal(LOGIN_MODAL);
+  };
+  const showSignupMenu = () => {
+    showModal(SIGNUP_MODAL);
+  };
 
   if (loggedIn.uid) {
     links = (
@@ -53,8 +63,8 @@ const Header = ({ darkMode, setDarkMode, loggedIn }) => {
     links = (
       <>
         <NavLinks link="/premium">Premium</NavLinks>
-        <NavLinks link="/signin">Login</NavLinks>
-        <NavLinks link="/signup">Signup</NavLinks>
+        <NavLinks showLoginMenu={showLoginMenu}>Login</NavLinks>
+        <NavLinks showSignupMenu={showSignupMenu}>Signup</NavLinks>
       </>
     );
   }
@@ -71,7 +81,11 @@ const Header = ({ darkMode, setDarkMode, loggedIn }) => {
   );
 };
 
-export default Header;
+const mapDispatchToProps = dispatch => ({
+  showModal: modelType => dispatch(showModal(modelType))
+});
+
+export default connect(null, mapDispatchToProps)(Header);
 
 Header.propTypes = {
   darkMode: PropTypes.bool.isRequired,
