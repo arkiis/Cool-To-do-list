@@ -17,6 +17,7 @@ const App = ({ loggedIn, emailVerified }) => {
     routes = (
       <Switch>
         <Route exact path="/verify-email" component={VerifyEmail} />
+        <Redirect to="/verify-email" />
       </Switch>
     );
   } else if (loggedIn && emailVerified) {

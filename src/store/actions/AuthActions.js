@@ -6,7 +6,10 @@ import {
   LOGOUT_USER,
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
-  SIGNUP_USER_FAILURE
+  SIGNUP_USER_FAILURE,
+  VERIFY_START,
+  VERIFY_SUCCESS,
+  VERIFY_FAIL
 } from "./type";
 
 /**
@@ -44,5 +47,24 @@ export const signUp = data => async (
     });
   } catch (err) {
     dispatch({ type: SIGNUP_USER_FAILURE, payload: err.message });
+  }
+};
+
+/**
+ * Verify email action
+ */
+export const verifyEmail = () => async (
+  dispatch,
+  getState,
+  { getFirebase }
+) => {
+  const firebase = getFirebase();
+  dispatch({ type: VERIFY_START });
+  try {
+    const user = firebase.auth().currentUser;
+    await user.sendEmailVerification();
+    dispatch({ type: VERIFY_SUCCESS });
+  } catch (err) {
+    dispatch({ type: VERIFY_FAIL, payload: err.message });
   }
 };
