@@ -3,7 +3,12 @@ import Header from "./Header";
 import { ProjectsProvider, SelectedProjectProvider } from "../../context";
 import { connect } from "react-redux";
 
-const Layout = ({ darkModeDefault = false, children, loggedIn }) => {
+const Layout = ({
+  darkModeDefault = false,
+  children,
+  loggedIn,
+  emailVerified
+}) => {
   const [darkMode, setDarkMode] = useState(darkModeDefault);
   return (
     <SelectedProjectProvider>
@@ -20,6 +25,7 @@ const Layout = ({ darkModeDefault = false, children, loggedIn }) => {
         >
           <Header
             loggedIn={loggedIn}
+            emailVerified={emailVerified}
             darkMode={darkMode}
             setDarkMode={setDarkMode}
           />{" "}
@@ -31,7 +37,8 @@ const Layout = ({ darkModeDefault = false, children, loggedIn }) => {
   );
 };
 const mapStateToProps = ({ firebase }) => ({
-  loggedIn: firebase.auth
+  loggedIn: firebase.auth,
+  emailVerified: firebase.auth.emailVerified
 });
 
 export default connect(mapStateToProps)(Layout);

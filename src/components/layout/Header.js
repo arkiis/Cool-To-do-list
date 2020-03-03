@@ -8,7 +8,13 @@ import { connect } from "react-redux";
 import { showModal } from "../../store/actions/ModalActions";
 import { LOGIN_MODAL, SIGNUP_MODAL } from "../../store/actions/type";
 
-const Header = ({ darkMode, setDarkMode, loggedIn, showModal }) => {
+const Header = ({
+  darkMode,
+  setDarkMode,
+  loggedIn,
+  showModal,
+  emailVerified
+}) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
 
@@ -69,15 +75,17 @@ const Header = ({ darkMode, setDarkMode, loggedIn, showModal }) => {
     );
   }
 
-  return (
-    <header className="header" data-testid="header">
-      <nav>
-        <Logo loggedIn={loggedIn} />
-        <div className="settings">
-          <ul>{links}</ul>
-        </div>
-      </nav>
-    </header>
+  return loggedIn.uid && !emailVerified ? null : (
+    <>
+      <header className="header" data-testid="header">
+        <nav>
+          <Logo loggedIn={loggedIn} />
+          <div className="settings">
+            <ul>{links}</ul>
+          </div>
+        </nav>
+      </header>
+    </>
   );
 };
 
