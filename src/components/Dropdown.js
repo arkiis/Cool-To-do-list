@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
 import PowerSettingsNew from "@material-ui/icons/PowerSettingsNew";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { firebase } from "../firebase";
 import { getSingleLetter } from "../helpers/index";
@@ -52,9 +52,9 @@ const Dropdown = ({ loggedIn }) => {
           <hr />
           <div className="menu-log-out">
             <PowerSettingsNew />
-            <Link to="/home/logout">
+            <NavLink to="/home/logout">
               <span>Log Out</span>
-            </Link>
+            </NavLink>
           </div>
         </div>
       )}
