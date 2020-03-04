@@ -1,8 +1,14 @@
 import React from "react";
 import ModalContainer from "../components/ModalContainer";
 import { LOGIN_MODAL, SIGNUP_MODAL } from "../store/actions/type";
+import { connect } from "react-redux";
+import { showModal } from "../store/actions/ModalActions";
 
-const Home = () => {
+const Home = ({ showModal }) => {
+  const showSignupMenu = () => {
+    showModal(SIGNUP_MODAL);
+  };
+
   return (
     <>
       <div>
@@ -15,7 +21,7 @@ const Home = () => {
         <section>
           <div className="heroWrapper">
             <h1>Organize your work</h1>
-            <a>Get Started</a>
+            <a onClick={showSignupMenu}>Get Started</a>
           </div>
         </section>
       </div>
@@ -23,4 +29,8 @@ const Home = () => {
   );
 };
 
-export default Home;
+const mapDispatchToProps = dispatch => ({
+  showModal: modelType => dispatch(showModal(modelType))
+});
+
+export default connect(null, mapDispatchToProps)(Home);
