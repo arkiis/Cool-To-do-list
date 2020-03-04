@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ChevronRightIcon from "@material-ui/icons/ChevronRight";
-import PowerSettingsNew from "@material-ui/icons/PowerSettingsNew";
+import ExitToApp from "@material-ui/icons/ExitToApp";
 import { Link, NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { firebase } from "../firebase";
@@ -42,6 +42,7 @@ const Dropdown = ({ loggedIn }) => {
         <div className="user-profile-menu-panel">
           <div className="menu-item">
             <span>Try Premium</span>
+
             <ChevronRightIcon />
           </div>
           <div className="menu-item">
@@ -51,10 +52,8 @@ const Dropdown = ({ loggedIn }) => {
 
           <hr />
           <div className="menu-log-out">
-            <PowerSettingsNew />
-            <NavLink to="/home/logout">
-              <span>Log Out</span>
-            </NavLink>
+            <ExitToApp />
+            <NavLink to="/home/logout">Log Out</NavLink>
           </div>
         </div>
       )}

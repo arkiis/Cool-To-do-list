@@ -631,12 +631,13 @@ header {
   .user-profile-menu-panel {
     position: absolute;
     width: 230px;
-    background-color: white;
+    background-color: #fff;
     display: flex;
+    padding: 5px;
     flex-direction: column;
     top: 75px;
     right: 0;
-
+    border-radius: 7px;
     box-shadow: $box-shadow;
 
     .menu-item,
@@ -657,19 +658,22 @@ header {
     }
     .menu-log-out {
       justify-content: flex-start;
-      border-top: solid 0.5px rgba(128, 128, 128, 0.89);
+      border-top: solid 0.5px rgba(128, 128, 128, 0.69);
       color: rgba(172, 12, 12, 0.822);
       padding-top: 5px;
       padding-bottom: 5px;
       &:hover {
         color: rgba(172, 12, 12, 0.822);
-        font-weight: bold;
+        font-weight: 600;
         cursor: pointer;
       }
-      span {
+
+      a {
         display: flex;
         align-items: center;
         padding-left: 20px;
+        text-decoration: none;
+        color: unset;
       }
     }
   }
