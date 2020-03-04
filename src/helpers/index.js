@@ -9,6 +9,19 @@ export const getCollatedTitle = (projects, key) =>
 export const collatedTasksExist = selectedProject =>
   collatedTasks.find(task => task.key === selectedProject);
 
+export const getSingleLetter = name => {
+  let final = [];
+
+  let arr = name.split("");
+
+  if (arr[0]) {
+    final.push(arr[0]);
+  } else {
+    return null;
+  }
+  return final;
+};
+
 export const generatePushId = (() => {
   const PUSH_CHARS =
     "-0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmnopqrstuvwxyz";

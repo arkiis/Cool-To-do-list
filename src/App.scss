@@ -600,6 +600,80 @@ header {
     }
   }
 }
+.user-profile-menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 30px;
+  padding-right: 30px;
+  position: relative;
+
+  .user-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    background-color: $gray;
+    border-radius: 50%;
+    color: white;
+    font-size: 20px;
+  }
+
+  .user-drop-down-icon {
+    font-size: 6px;
+    color: #fff;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .user-profile-menu-panel {
+    position: absolute;
+    width: 230px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    top: 75px;
+    right: 0;
+
+    box-shadow: $box-shadow;
+
+    .menu-item,
+    .menu-log-out {
+      width: 100%;
+      padding-top: 10px;
+      padding-right: 20px;
+      padding-left: 20px;
+      display: flex;
+    }
+    .menu-item {
+      justify-content: space-between;
+      &:hover {
+        color: $gray;
+        font-weight: bold;
+        cursor: pointer;
+      }
+    }
+    .menu-log-out {
+      justify-content: flex-start;
+      border-top: solid 0.5px rgba(128, 128, 128, 0.89);
+      color: rgba(172, 12, 12, 0.822);
+      padding-top: 5px;
+      padding-bottom: 5px;
+      &:hover {
+        color: rgba(172, 12, 12, 0.822);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      span {
+        display: flex;
+        align-items: center;
+        padding-left: 20px;
+      }
+    }
+  }
+}
 
 /* Sidebar
      ============================================ */

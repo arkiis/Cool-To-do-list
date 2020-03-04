@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Logo from "../Logo";
@@ -7,6 +7,8 @@ import NavLinks from "../NavLinks";
 import { connect } from "react-redux";
 import { showModal } from "../../store/actions/ModalActions";
 import { LOGIN_MODAL, SIGNUP_MODAL } from "../../store/actions/type";
+import Dropdown from "../Dropdown";
+import { firebase } from "../../firebase";
 
 const Header = ({
   darkMode,
@@ -28,6 +30,7 @@ const Header = ({
   };
 
   if (loggedIn.uid) {
+    console.log("loggedIn.uid", loggedIn);
     links = (
       <>
         <li data-testid="quick-add-task-action" className="settings__add">
@@ -56,6 +59,8 @@ const Header = ({
             {darkMode ? <FaSun /> : <FaMoon />}
           </button>
         </li>
+
+        <Dropdown />
 
         <AddTask
           showAddTaskMain={false}
