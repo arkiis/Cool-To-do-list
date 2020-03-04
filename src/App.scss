@@ -868,6 +868,7 @@ header {
   font-weight: bold;
   font-size: 13px;
   margin-bottom: 5px;
+  animation: modalContentFadeIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 }
 .authCheckbox {
   display: flex;
@@ -885,7 +886,7 @@ header {
 .signUpWrapper {
   width: 350px;
   height: 40%;
-  background-color: #fff;
+  // background-color: #fff;
 
   button {
     @include btn(100%);
@@ -899,6 +900,8 @@ header {
     border: 1px solid #ddd;
     border-radius: 5px;
     margin-bottom: 1em;
+    animation: modalContentFadeIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+      forwards;
   }
   .errorInput {
     color: $generic-bg;
@@ -931,12 +934,15 @@ header {
     padding: 2rem;
     border-radius: 6px;
     flex-direction: column;
-    background-color: #fff;
+
+    animation: modalFadeIn 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
 
     .auth-modal-close {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      animation: modalContentFadeIn 0.2s cubic-bezier(0.165, 0.84, 0.44, 1)
+        forwards;
 
       h6 {
         font-size: 0.75rem;
@@ -950,6 +956,22 @@ header {
         cursor: pointer;
       }
     }
+  }
+}
+@keyframes modalFadeIn {
+  0% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: white;
+  }
+}
+@keyframes modalContentFadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
