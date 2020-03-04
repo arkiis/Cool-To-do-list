@@ -171,6 +171,14 @@ $box-shadow: 0 1px 2px 0 rgba(60, 64, 67, 0.3),
   box-shadow: $box-shadow;
 }
 //LOADER Styles
+.loaderWrapper {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .sk-folding-cube {
   margin: 20px auto;
   width: 40px;

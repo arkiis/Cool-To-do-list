@@ -6,7 +6,9 @@ const Logo = ({ loggedIn }) => {
       {loggedIn.uid ? (
         <img src="/image/logo.png" alt="Todoist" />
       ) : (
-        <img src="/image/home-logo.svg" alt="Todoist" />
+        <a href="/">
+          <img src="/image/home-logo.svg" alt="Todoist" />
+        </a>
       )}
     </div>
   );

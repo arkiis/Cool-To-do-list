@@ -11,9 +11,9 @@ import Loader from "./components/Loader";
 const root = document.getElementById("root");
 
 ReactDOM.render(
-  <>
+  <div className="loaderWrapper">
     <Loader />
-  </>,
+  </div>,
   root
 );
 
