@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 // Redux
 import { connect } from "react-redux";
 import { NotificationManager } from "react-notifications";
@@ -7,11 +7,12 @@ import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { labels } from "../../constants/index";
 // Actions
-import { signUp } from "../../store/actions";
+import { signUp, clean } from "../../store/actions";
 import { hideModal } from "../../store/actions/ModalActions";
 import Input from "../Forms/Input.js";
 import Message from "../Message";
 import Modal from "../Modal";
+
 const SignUpSchema = Yup.object().shape({
   userName: Yup.string()
     .required("You need a username silly!")
@@ -31,7 +32,13 @@ const SignUpSchema = Yup.object().shape({
     .oneOf([true], "You must accept the terms and conditions")
 });
 
-const Register = ({ signUp, loading, error, hideModal }) => {
+const Register = ({ signUp, loading, error, hideModal, cleanUp }) => {
+  useEffect(() => {
+    return () => {
+      cleanUp();
+    };
+  }, [cleanUp]);
+
   const onClose = () => {
     hideModal();
   };
@@ -118,7 +125,8 @@ const mapStateToProps = ({ auth }) => ({
 });
 const mapDispatchToProps = {
   signUp: signUp,
-  hideModal: () => hideModal()
+  hideModal: () => hideModal(),
+  cleanUp: clean
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

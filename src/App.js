@@ -10,6 +10,7 @@ import Layout from "./components/layout";
 import VerifyEmail from "./components/Auth/VerifyEmail";
 import Home from "./pages/Home";
 import ModalContainer from "./components/ModalContainer";
+import Logout from "./components/Auth/Logout";
 
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
@@ -25,6 +26,7 @@ const App = ({ loggedIn, emailVerified }) => {
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <Route exact path="/home" component={Content} />
+          <Route exact path="/home/logout" component={Logout} />
           <Redirect to="/home" />
         </Switch>
       </Suspense>

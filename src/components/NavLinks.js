@@ -1,9 +1,9 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 
-const NavLinks = ({ children, link, showSignupMenu }) => {
+const NavLinks = ({ children, link, clicked }) => {
   return (
-    <li onClick={showSignupMenu}>
+    <li onClick={clicked}>
       <a>{children}</a>
     </li>
   );

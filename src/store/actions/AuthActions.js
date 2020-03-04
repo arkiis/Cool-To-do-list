@@ -7,9 +7,13 @@ import {
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
   SIGNUP_USER_FAILURE,
+  SIGNUP_USER_END,
   VERIFY_START,
   VERIFY_SUCCESS,
-  VERIFY_FAIL
+  VERIFY_FAIL,
+  CLEAN_UP,
+  DELETE_START,
+  DELETE_FAIL
 } from "./type";
 
 /**
@@ -48,6 +52,31 @@ export const signUp = data => async (
   } catch (err) {
     dispatch({ type: SIGNUP_USER_FAILURE, payload: err.message });
   }
+  dispatch({ type: SIGNUP_USER_END });
+};
+
+//Login action creator
+export const signIn = data => async (dispatch, getState, { getFirebase }) => {
+  const firebase = getFirebase();
+  dispatch({ type: SIGNUP_USER });
+  try {
+    await firebase.auth().signInWithEmailAndPassword(data.email, data.password);
+    dispatch({ type: SIGNUP_USER_SUCCESS });
+  } catch (err) {
+    dispatch({ type: SIGNUP_USER_FAILURE, payload: err.message });
+  }
+  dispatch({ type: SIGNUP_USER_END });
+};
+
+//Logout action creator
+export const signOut = () => async (dispatch, getState, { getFirebase }) => {
+  const firebase = getFirebase();
+  try {
+    await firebase.auth().signOut();
+    console.log("signout fired!");
+  } catch (err) {
+    console.log(err.message);
+  }
 };
 
 /**
@@ -66,5 +95,31 @@ export const verifyEmail = () => async (
     dispatch({ type: VERIFY_SUCCESS });
   } catch (err) {
     dispatch({ type: VERIFY_FAIL, payload: err.message });
+  }
+};
+
+//clean up messages
+export const clean = () => ({
+  type: CLEAN_UP
+});
+
+//Delete user
+export const deleteUser = () => async (
+  dispatch,
+  getState,
+  { getFirebase, getFirestore }
+) => {
+  const firebase = getFirebase();
+  const firestore = getFirestore();
+  const user = firebase.auth().currentUser;
+  const userId = getState().firebase.auth.uid;
+  dispatch({ type: DELETE_START });
+  try {
+    await firestore
+      .collection("users")
+      .doc(userId)
+      .delete();
+  } catch (err) {
+    dispatch({ type: DELETE_FAIL, payload: err.message });
   }
 };

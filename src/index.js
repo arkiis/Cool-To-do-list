@@ -6,25 +6,24 @@ import { BrowserRouter as Router } from "react-router-dom";
 import store from "./store";
 import App from "./App";
 import "./App.scss";
+import Loader from "./components/Loader";
 
 const root = document.getElementById("root");
 
 ReactDOM.render(
   <>
-    <div>
-      <p>Loading...</p>
-    </div>
+    <Loader />
   </>,
   root
 );
 
-// store.firebaseAuthIsReady.then(() => {
-ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
-  root
-);
-// });
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
+    root
+  );
+});

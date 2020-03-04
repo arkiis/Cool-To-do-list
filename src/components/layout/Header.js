@@ -69,8 +69,8 @@ const Header = ({
     links = (
       <>
         <NavLinks link="/premium">Premium</NavLinks>
-        <NavLinks showLoginMenu={showLoginMenu}>Login</NavLinks>
-        <NavLinks showSignupMenu={showSignupMenu}>Signup</NavLinks>
+        <NavLinks clicked={showLoginMenu}>Login</NavLinks>
+        <NavLinks clicked={showSignupMenu}>Signup</NavLinks>
       </>
     );
   }

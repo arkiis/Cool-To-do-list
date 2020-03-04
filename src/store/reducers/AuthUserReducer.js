@@ -9,9 +9,12 @@ import {
   SIGNUP_USER,
   SIGNUP_USER_SUCCESS,
   SIGNUP_USER_FAILURE,
+  SIGNUP_USER_END,
   VERIFY_START,
   VERIFY_SUCCESS,
-  VERIFY_FAIL
+  VERIFY_FAIL,
+  CLEAN_UP,
+  DELETE_FAIL
 } from "../actions/type";
 
 /**
@@ -24,6 +27,10 @@ const initialState = {
   verifyEmail: {
     error: null,
     loading: false
+  },
+  deleteUser: {
+    loading: false,
+    error: null
   }
 };
 //helper functions
@@ -36,6 +43,9 @@ const signUpSuccess = state => {
 };
 const signUpError = (state, payload) => {
   return { ...state, error: payload };
+};
+const signUpEnd = state => {
+  return { ...state, loading: false };
 };
 const verifyStart = state => {
   return {
@@ -58,8 +68,35 @@ const verifyFail = (state, payload) => {
   };
 };
 
+const deleteFail = (state, payload) => {
+  return {
+    ...state,
+    deleteUser: { ...state.deleteUser, loading: false, error: payload }
+  };
+};
+
+const cleanUp = state => {
+  return {
+    ...state,
+    error: null,
+    loading: false,
+    verifyEmail: {
+      ...state.verifyEmail,
+      loading: false,
+      error: null
+    },
+    deleteUser: {
+      ...state.deleteUser,
+      loading: false,
+      error: null
+    }
+  };
+};
+
 export default (state = initialState, { type, payload }) => {
   switch (type) {
+    case CLEAN_UP:
+      return cleanUp(state);
     case SIGNUP_USER:
       return signUp(state);
 
@@ -69,6 +106,9 @@ export default (state = initialState, { type, payload }) => {
     case SIGNUP_USER_FAILURE:
       return signUpError(state, payload);
 
+    case SIGNUP_USER_END:
+      return signUpEnd(state);
+
     case VERIFY_START:
       return verifyStart(state);
 
@@ -76,6 +116,8 @@ export default (state = initialState, { type, payload }) => {
       return verifySuccess(state);
     case VERIFY_FAIL:
       return verifyFail(state, payload);
+    case DELETE_FAIL:
+      return deleteFail(state, payload);
     default:
       return state;
   }
