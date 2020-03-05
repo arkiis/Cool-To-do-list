@@ -12,3 +12,28 @@ export const labels = {
   confirmPassword: "Confirm password",
   terms: "I agree to the Terms of Services and Privacy Policy"
 };
+
+//REVIEWS
+export const reviews = [
+  {
+    location: "Google Play",
+    rating: "★★★★★",
+    id: 1,
+    comment: `Editor’s Choice
+    4.7 stars, 187K+ reviews`
+  },
+  {
+    location: "App Store",
+    rating: "★★★★★",
+    id: 2,
+    comment: `Featured app
+    4.8 stars, 30K+ reviews`
+  },
+  {
+    location: "Verge",
+    rating: "9/10",
+    id: 3,
+    comment: `The best to-do list app
+    right now`
+  }
+];

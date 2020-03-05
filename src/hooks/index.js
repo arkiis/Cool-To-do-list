@@ -9,7 +9,15 @@ export const useTasks = selectedProject => {
   const [archivedTasks, setArchivedTasks] = useState([]);
 
   useEffect(() => {
-    const userId = firebase.auth().currentUser.uid;
+    let userId;
+    if (
+      firebase.auth().currentUser &&
+      firebase.auth().currentUser.uid !== null
+    ) {
+      userId = firebase.auth().currentUser.uid;
+    } else {
+      userId = "12435";
+    }
     let unsubscribe = firebase
       .firestore()
       .collection("tasks")
@@ -59,7 +67,15 @@ export const useProjects = () => {
     console.log("user id: " + firebase.auth().currentUser.uid);
 
   useEffect(() => {
-    const userId = firebase.auth().currentUser.uid;
+    let userId;
+    if (
+      firebase.auth().currentUser &&
+      firebase.auth().currentUser.uid !== null
+    ) {
+      userId = firebase.auth().currentUser.uid;
+    } else {
+      userId = "12435";
+    }
     firebase
       .firestore()
       .collection("projects")
