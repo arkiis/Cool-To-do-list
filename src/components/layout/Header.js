@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import PropTypes from "prop-types";
 import Logo from "../Logo";
-import { AddTask } from "../AddTask";
+import AddTask from "../AddTask";
 import NavLinks from "../NavLinks";
 import { connect } from "react-redux";
 import { showModal } from "../../store/actions/ModalActions";
@@ -31,6 +31,7 @@ const Header = ({
 
   if (loggedIn.uid) {
     console.log("loggedIn.uid", loggedIn);
+    console.log("firebase", firebase);
     links = (
       <>
         <li data-testid="quick-add-task-action" className="settings__add">

@@ -3,14 +3,15 @@ import { firebase } from "../firebase";
 import { generatePushId } from "../helpers";
 import { useProjectsValue } from "../context";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-const AddProject = ({ shouldShow = false }) => {
+const AddProject = ({ shouldShow = false, loggedIn }) => {
   const [show, setShow] = useState(shouldShow);
   const [projectName, setProjectName] = useState("");
 
   const projectId = generatePushId();
   const { projects, setProjects } = useProjectsValue();
-
+  console.log("loggedIn", loggedIn);
   const addProject = () =>
     projectName &&
     firebase
@@ -19,7 +20,7 @@ const AddProject = ({ shouldShow = false }) => {
       .add({
         projectId,
         name: projectName,
-        userId: "ffifg8347"
+        userId: loggedIn.uid
       })
       .then(() => {
         setProjects([...projects]);
@@ -74,7 +75,11 @@ const AddProject = ({ shouldShow = false }) => {
   );
 };
 
-export default AddProject;
+const mapStateToProps = ({ firebase }) => ({
+  loggedIn: firebase.auth
+});
+
+export default connect(mapStateToProps, null)(AddProject);
 
 AddProject.propTypes = {
   shouldShow: PropTypes.bool

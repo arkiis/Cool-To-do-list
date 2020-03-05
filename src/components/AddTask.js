@@ -6,12 +6,14 @@ import { useSelectedProjectValue } from "../context";
 import { ProjectOverlay } from "./ProjectOverlay";
 import { TaskDate } from "./TaskDate";
 import PropTypes from "prop-types";
+import { connect } from "react-redux";
 
-export const AddTask = ({
+const AddTask = ({
   showAddTaskMain = true,
   shouldShowMain = false,
   showQuickAddTask,
-  setShowQuickAddTask
+  setShowQuickAddTask,
+  loggedIn
 }) => {
   const [task, setTask] = useState("");
   const [taskDate, setTaskDate] = useState("");
@@ -46,7 +48,7 @@ export const AddTask = ({
           projectId,
           task,
           date: collatedDate || taskDate,
-          userId: "ffifg8347"
+          userId: loggedIn.uid
         })
         .then(() => {
           setTask("");
@@ -160,6 +162,12 @@ export const AddTask = ({
     </div>
   );
 };
+
+const mapStateToProps = ({ firebase }) => ({
+  loggedIn: firebase.auth
+});
+
+export default connect(mapStateToProps, null)(AddTask);
 
 AddTask.propTypes = {
   showAddTaskMain: PropTypes.bool,
