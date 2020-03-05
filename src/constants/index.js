@@ -31,7 +31,7 @@ export const reviews = [
   },
   {
     location: "Verge",
-    rating: "9/10",
+    rating: "★★★★★",
     id: 3,
     comment: `The best to-do list app
     right now`
