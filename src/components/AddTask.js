@@ -3,8 +3,8 @@ import moment from "moment";
 import { firebase } from "../firebase";
 import { FaRegListAlt, FaRegCalendarAlt } from "react-icons/fa";
 import { useSelectedProjectValue } from "../context";
-import { ProjectOverlay } from "./ProjectOverlay";
-import { TaskDate } from "./TaskDate";
+import ProjectOverlay from "./ProjectOverlay";
+import TaskDate from "./TaskDate";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 

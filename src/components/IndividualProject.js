@@ -9,6 +9,7 @@ export const IndividualProject = ({ project }) => {
   const { projects, setProjects } = useProjectsValue();
   const { setSelectedProject } = useSelectedProjectValue();
 
+  console.log("showConfirm", showConfirm);
   const deleteProject = docId => {
     firebase
       .firestore()

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { useProjectsValue } from "../context";
 
-export const ProjectOverlay = ({
+const ProjectOverlay = ({
   setProject,
   showProjectOverlay,
   setShowProjectOverlay
@@ -40,6 +40,8 @@ export const ProjectOverlay = ({
     )
   );
 };
+
+export default React.memo(ProjectOverlay);
 
 ProjectOverlay.propTypes = {
   projects: PropTypes.array
