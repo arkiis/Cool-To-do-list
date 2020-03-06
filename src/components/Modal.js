@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { memo } from "react";
 
 const Modal = props => {
   console.log(props);

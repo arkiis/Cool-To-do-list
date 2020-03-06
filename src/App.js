@@ -4,22 +4,25 @@ import { NotificationContainer } from "react-notifications";
 import { Route, Redirect, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import Register from "./components/Auth/Register";
-import Content from "./components/layout/Content";
+
 import PropTypes from "prop-types";
 import Layout from "./components/layout";
-import VerifyEmail from "./components/Auth/VerifyEmail";
 import Home from "./pages/Home";
 import ModalContainer from "./components/ModalContainer";
 import Logout from "./components/Auth/Logout";
+const Content = React.lazy(() => import("./components/layout/Content"));
+const VerifyEmail = React.lazy(() => import("./components/Auth/VerifyEmail"));
 
 const App = ({ loggedIn, emailVerified }) => {
   let routes;
   if (loggedIn && !emailVerified) {
     routes = (
-      <Switch>
-        <Route exact path="/verify-email" component={VerifyEmail} />
-        <Redirect to="/verify-email" />
-      </Switch>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <Route exact path="/verify-email" component={VerifyEmail} />
+          <Redirect to="/verify-email" />
+        </Switch>
+      </Suspense>
     );
   } else if (loggedIn && emailVerified) {
     routes = (
