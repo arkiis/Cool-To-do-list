@@ -5,7 +5,7 @@ const Review = ({ ...rest }) => {
   return (
     <div>
       <p>{rest.location}</p>
-      <div>
+      <div className="rating-wrapper">
         <div>{rest.rating}</div>
         <h4>{rest.comment}</h4>
       </div>
