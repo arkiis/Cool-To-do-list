@@ -9,7 +9,8 @@ import { showModal } from "../../store/actions/ModalActions";
 import { LOGIN_MODAL, SIGNUP_MODAL } from "../../store/actions/type";
 import Dropdown from "../Dropdown";
 import { firebase } from "../../firebase";
-
+import Hamburger from "../Hamburger";
+import HeaderSidebar from "../layout/HeaderSidebar";
 const Header = ({
   darkMode,
   setDarkMode,
@@ -19,8 +20,18 @@ const Header = ({
 }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
+  const [showHeaderSidebar, setShowHeaderSidebar] = useState(false);
 
   let links;
+
+  const showSideMenu = () => {
+    setShowHeaderSidebar(!showHeaderSidebar);
+  };
+  const closeSidebar = e => {
+    if (e.target.id === "sidebar") {
+      showSideMenu();
+    }
+  };
 
   const showLoginMenu = () => {
     showModal(LOGIN_MODAL);
@@ -87,9 +98,24 @@ const Header = ({
         <nav>
           <Logo loggedIn={loggedIn} />
           <div className="settings">
-            <ul>{links}</ul>
+            <ul className={`${!loggedIn.uid ? "linksWrapper" : ""}`}>
+              {links}
+            </ul>
+            {!loggedIn.uid && <Hamburger showSideMenu={showSideMenu} />}
           </div>
         </nav>
+        <div
+          id="sidebar"
+          onClick={e => closeSidebar(e)}
+          className={`${showHeaderSidebar && "headerSidebarOverlay"}`}
+        >
+          {!loggedIn.uid && (
+            <HeaderSidebar
+              links={links}
+              showHeaderSidebar={showHeaderSidebar}
+            />
+          )}
+        </div>
       </header>
     </>
   );

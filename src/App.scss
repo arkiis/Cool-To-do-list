@@ -173,6 +173,10 @@ $desktop-mq: 1120px;
   border-radius: 15px;
   box-shadow: $box-shadow;
 }
+//OPEN SIDEBAR CLASS
+.showSide {
+  transform: translateX(0) !important;
+}
 //LOADER Styles
 .loaderWrapper {
   width: 100%;
@@ -607,6 +611,36 @@ $desktop-mq: 1120px;
 
 /* Header
      ============================================ */
+.hamburger {
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 3.8rem;
+  cursor: pointer;
+  padding: 0 1.2rem;
+  position: absolute;
+  margin-right: -1.2rem;
+  border-top: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+
+  &::after,
+  &::before {
+    top: 55%;
+    width: 1.5rem;
+    height: 2px;
+    right: 1.2rem;
+    transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+    position: absolute;
+    background: #202020;
+    content: "";
+  }
+  &::before {
+    top: 43%;
+  }
+  @media screen and (min-width: $tablet-mq) {
+    display: none;
+  }
+}
 
 header {
   border-bottom: solid 1px #ca2100;
@@ -635,6 +669,7 @@ header {
     grid-column-gap: 0px;
     grid-row-gap: 0px;
     max-width: 922px;
+    position: relative;
     margin: auto;
     height: 3.6rem;
     p,
@@ -703,6 +738,55 @@ header {
     }
   }
 }
+.linksWrapper {
+  @media screen and (max-width: $tablet-mq) {
+    display: none !important;
+  }
+}
+.headerSidebarOverlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.24);
+  @media screen and (min-width: $tablet-mq) {
+    display: none;
+  }
+}
+.headerSidebar {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2500;
+  width: 13rem;
+  position: fixed;
+  background-color: #fff;
+  padding-top: 5.5rem;
+  display: inline-flex;
+  transform: translateX(100%);
+  justify-content: space-between;
+  border-left: 1px solid #dedede;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+  @media screen and (min-width: $tablet-mq) {
+    display: none;
+  }
+  ul {
+    list-style: none;
+  }
+  ul li {
+    padding: 2rem;
+    cursor: pointer;
+
+    &:hover {
+      border-radius: 3px;
+      background-color: rgba(255, 255, 255, 0.2);
+      text-decoration: underline;
+    }
+  }
+}
+
 .user-profile-menu {
   display: flex;
   justify-content: center;
