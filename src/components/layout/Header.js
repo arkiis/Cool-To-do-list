@@ -34,9 +34,11 @@ const Header = ({
   };
 
   const showLoginMenu = () => {
+    setShowHeaderSidebar(!showHeaderSidebar);
     showModal(LOGIN_MODAL);
   };
   const showSignupMenu = () => {
+    setShowHeaderSidebar(!showHeaderSidebar);
     showModal(SIGNUP_MODAL);
   };
 
