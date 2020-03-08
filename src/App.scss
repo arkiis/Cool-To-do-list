@@ -514,6 +514,9 @@ $desktop-mq: 1120px;
       @media screen and (max-width: $tablet-mq) {
         margin-right: 0;
       }
+      @media screen and (max-width: $mobile-mq) {
+        margin-bottom: 1.5rem;
+      }
 
       p {
         font-size: 1.4rem;
