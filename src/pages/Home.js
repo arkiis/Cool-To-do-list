@@ -4,6 +4,7 @@ import { LOGIN_MODAL, SIGNUP_MODAL } from "../store/actions/type";
 import { connect } from "react-redux";
 import { showModal } from "../store/actions/ModalActions";
 import Reviews from "../components/Reviews";
+import ArrowForward from "@material-ui/icons/ArrowForward";
 
 const Home = ({ showModal }) => {
   const showSignupMenu = () => {
@@ -29,6 +30,33 @@ const Home = ({ showModal }) => {
           <div className="reviewBG" />
 
           <Reviews />
+        </section>
+        <section className="videoSection">
+          <div className="videoContent">
+            <p>
+              Todoist has helped
+              <br />
+              millions of people complete
+              <h1>
+                over 1.5 billion tasks
+                <br />
+                in 150+ million projects
+              </h1>
+            </p>
+            <div>{/* map companies */}</div>
+          </div>
+          <div className="videoWrapper">
+            <div className="videoContainer">
+              <img src="./image/bg-green.webp" className="green-bg" />
+              <img src="./image/video-thumb.webp" className="video-thumb" />
+            </div>
+            <a href="https://www.youtube.com/channel/UC2cIJ3z3TaHdcBofbroVUEA?view_as=subscriber">
+              <div className="arrowForward">
+                <ArrowForward />
+              </div>
+              <span>Learn more about the Todoist community</span>
+            </a>
+          </div>
         </section>
       </div>
     </>

@@ -490,6 +490,100 @@ $desktop-mq: 1120px;
       }
     }
   }
+  .videoSection {
+    padding: 14rem 1rem 8rem;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 1120px;
+    @media screen and (max-width: $tablet-mq) {
+      flex-direction: column;
+      text-align: center;
+      padding: 18vw 1rem 14vw;
+    }
+
+    .videoContent {
+      display: flex;
+      font-weight: 600;
+      white-space: pre-wrap;
+      flex-direction: column;
+      margin-right: 2rem;
+      @media screen and (max-width: $tablet-mq) {
+        margin-right: 0;
+      }
+
+      p {
+        font-size: 1.4rem;
+        line-height: 1.35;
+        margin-right: 1rem;
+        text-align: left;
+        @media screen and (max-width: $tablet-mq) {
+          text-align: center;
+          font-size: 1.1rem;
+        }
+
+        h1 {
+          display: block;
+          margin-top: 0.8rem;
+          line-height: 1.2;
+          font-size: 3.2rem;
+          letter-spacing: -2px;
+          @media screen and (max-width: $tablet-mq) {
+            font-size: 2.2rem;
+            letter-spacing: -1px;
+          }
+        }
+      }
+    }
+    .videoWrapper {
+      display: flex;
+      margin-top: 1rem;
+      flex-direction: column;
+      @media screen and (max-width: $tablet-mq) {
+        margin: 10vw auto;
+        text-align: left;
+      }
+
+      .videoContainer {
+        width: 478px;
+        margin: 0 auto;
+        cursor: pointer;
+        position: relative;
+      }
+
+      .green-bg {
+        top: -32%;
+        left: 4%;
+        width: 110%;
+        max-width: 528px;
+        max-height: 363px;
+        position: absolute;
+      }
+      .video-thumb {
+        width: 100%;
+        position: relative;
+        max-width: 478px;
+        border-radius: 8px;
+        box-shadow: $box-shadow;
+      }
+      a {
+        margin-top: 1rem;
+        color: #316fea;
+        position: relative;
+        display: inline-flex;
+        align-items: flex-start;
+        text-decoration: none;
+
+        .arrowForward {
+          display: flex;
+          align-items: center;
+          margin-right: 0.5rem;
+        }
+      }
+    }
+  }
 }
 
 .MainContent {
