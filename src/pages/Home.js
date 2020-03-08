@@ -43,7 +43,6 @@ const Home = ({ showModal }) => {
                 in 150+ million projects
               </h1>
             </p>
-            <div>{/* map companies */}</div>
           </div>
           <div className="videoWrapper">
             <div className="videoContainer">
