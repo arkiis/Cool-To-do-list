@@ -4,7 +4,9 @@ import { NavLink } from "react-router-dom";
 const NavLinks = ({ children, link, clicked }) => {
   return (
     <li onClick={clicked}>
-      <a href={link}>{children}</a>
+      <NavLink to={link}>
+        <a>{children}</a>
+      </NavLink>
     </li>
   );
 };
