@@ -7,7 +7,7 @@ const Checkout = ({ price }) => {
   const stripe = window.Stripe("pk_test_2do6pJchuMIGtZ2cqrLgDjM300sB7DRzbF");
 
   useEffect(() => {
-    fetch("/charge", {
+    fetch("https://todoist-server.herokuapp.com/charge", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
