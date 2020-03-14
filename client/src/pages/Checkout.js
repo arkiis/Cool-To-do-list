@@ -31,8 +31,18 @@ const Checkout = ({ price }) => {
   };
 
   return (
-    <div>
-      <button onClick={handleClick}>Buy</button>
+    <div className="homeWrapper">
+      <section>
+        <div className="heroWrapper">
+          <h1>Join Todoist Gold</h1>
+          <a onClick={handleClick}>Let's do this!</a>
+        </div>
+        <img
+          className="home-hero"
+          src="/image/fish-trophy.png"
+          alt="cartoon cat and rat looking at each other"
+        />
+      </section>
     </div>
   );
 };
