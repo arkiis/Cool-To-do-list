@@ -35,7 +35,7 @@ app.post("/charge", (req, res) => {
       },
       success_url:
         "https://example.com/success?session_id={CHECKOUT_SESSION_ID}",
-      cancel_url: "https://example.com/cancel"
+      cancel_url: "https://elated-kowalevski-c4248c.netlify.com/"
     });
     res.send({ id: session.id });
   })();
