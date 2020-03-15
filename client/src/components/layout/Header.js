@@ -11,6 +11,8 @@ import Dropdown from "../Dropdown";
 import { firebase } from "../../firebase";
 import Hamburger from "../Hamburger";
 import HeaderSidebar from "./HeaderSidebar";
+import NavRouter from "../NavRouter";
+
 const Header = ({
   darkMode,
   setDarkMode,
@@ -87,7 +89,7 @@ const Header = ({
   } else {
     links = (
       <>
-        <NavLinks link="/premium">Premium</NavLinks>
+        <NavRouter link="/premium">Premium</NavRouter>
         <NavLinks clicked={showLoginMenu}>Login</NavLinks>
         <NavLinks clicked={showSignupMenu}>Signup</NavLinks>
       </>
