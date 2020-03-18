@@ -47,7 +47,7 @@ const App = ({ loggedIn, emailVerified }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/premium" component={Checkout} />
-        <Route exact path="/success" component={Success} />
+        <Route exact path="/premium/success" component={Success} />
         <Route exact path="/signup" component={Register} />
         <Redirect to="/" />
       </Switch>

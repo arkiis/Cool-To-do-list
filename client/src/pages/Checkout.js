@@ -20,7 +20,6 @@ const Checkout = ({ price }) => {
       .then(function(response) {
         sessionId = response.id;
         console.log(response.id);
-        console.log(response);
       });
   });
 
