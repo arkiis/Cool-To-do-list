@@ -12,7 +12,6 @@ import Home from "./pages/Home";
 import ModalContainer from "./components/ModalContainer";
 import Logout from "./components/Auth/Logout";
 import Checkout from "./pages/Checkout";
-import Success from "./pages/Success";
 const Content = React.lazy(() => import("./components/layout/Content"));
 const VerifyEmail = React.lazy(() => import("./components/Auth/VerifyEmail"));
 
@@ -47,7 +46,6 @@ const App = ({ loggedIn, emailVerified }) => {
       <Switch>
         <Route exact path="/" component={Home} />
         <Route exact path="/premium" component={Checkout} />
-        <Route exact path="/premium/success" component={Success} />
         <Route exact path="/signup" component={Register} />
         <Redirect to="/" />
       </Switch>
