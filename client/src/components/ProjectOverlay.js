@@ -6,7 +6,8 @@ import { useProjectsValue } from "../context";
 const ProjectOverlay = ({
   setProject,
   showProjectOverlay,
-  setShowProjectOverlay
+  setShowProjectOverlay,
+  setProjectName
 }) => {
   const { projects } = useProjectsValue();
 
@@ -20,6 +21,7 @@ const ProjectOverlay = ({
               <div
                 onClick={() => {
                   setProject(project.projectId);
+                  setProjectName(project.name);
                   setShowProjectOverlay(false);
                 }}
                 onKeyDown={() => {

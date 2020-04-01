@@ -21,6 +21,8 @@ const AddTask = ({
   const [showMain, setShowMain] = useState(shouldShowMain);
   const [showProjectOverlay, setShowProjectOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
+  const [projectName, setProjectName] = useState("");
+  console.log(project);
 
   const { selectedProject } = useSelectedProjectValue();
   //inspect selectedProject *need to understand better
@@ -98,6 +100,7 @@ const AddTask = ({
           )}
           <ProjectOverlay
             setProject={setProject}
+            setProjectName={setProjectName}
             showProjectOverlay={showProjectOverlay}
             setShowProjectOverlay={setShowProjectOverlay}
           />
@@ -113,9 +116,11 @@ const AddTask = ({
             aria-label="Enter your task"
             onChange={e => setTask(e.target.value)}
           />
-          <div>
-            <h1>{project && project.name}</h1>
-            <h1>{taskDate && taskDate}</h1>
+
+          <div className="added-project">
+            {project && <h1>{projectName}</h1>}
+
+            {taskDate && <h1>{taskDate}</h1>}
           </div>
           <button
             type="button"

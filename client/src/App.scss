@@ -1468,6 +1468,20 @@ header {
   font-size: 14px;
   margin-left: 15px;
 }
+.added-project {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  h1 {
+    background: $generic-bg;
+    color: #fff;
+    font-size: 10px;
+    border-radius: 5px;
+    padding: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+}
 
 /* Task Date **************** */
 
