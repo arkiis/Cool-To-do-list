@@ -73,6 +73,7 @@ export const signOut = () => async (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   try {
     await firebase.auth().signOut();
+
     console.log("signout fired!");
   } catch (err) {
     console.log(err.message);

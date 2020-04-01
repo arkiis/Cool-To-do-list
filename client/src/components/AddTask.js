@@ -113,6 +113,10 @@ const AddTask = ({
             aria-label="Enter your task"
             onChange={e => setTask(e.target.value)}
           />
+          <div>
+            <h1>{project && project.name}</h1>
+            <h1>{taskDate && taskDate}</h1>
+          </div>
           <button
             type="button"
             className="add-task__submit"
