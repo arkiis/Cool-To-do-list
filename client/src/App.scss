@@ -409,11 +409,40 @@ $desktop-mq: 1120px;
   }
 }
 //END OF DARKMODE***********
+//SECTION NAVIGATION =====================
+.sectionNavigation {
+  display: block;
 
+  position: sticky;
+  bottom: 50%;
+  width: 100%;
+  max-width: 144rem;
+  margin: 0 auto;
+  z-index: 3;
+  counter-reset: counter;
+  pointer-events: none;
+
+  .navButton {
+    content: "";
+    display: block;
+    height: 0.6rem;
+    width: 1rem;
+    border-bottom: 1px solid;
+    top: 0;
+    left: 0;
+    margin-left: -1rem;
+    transform-origin: right bottom;
+    border: none;
+    background: none;
+    text-align: left;
+    margin: 1.5rem 3rem;
+    padding: 0 2.5rem;
+  }
+}
 /* HOME PAGE
      ============================================ */
 .homeWrapper {
-  overflow: hidden;
+  // overflow: hidden;
   width: 100%;
 
   section {
@@ -551,7 +580,7 @@ $desktop-mq: 1120px;
       }
 
       .videoContainer {
-        width: 478px;
+        width: 100%;
         margin: 0 auto;
         cursor: pointer;
         position: relative;

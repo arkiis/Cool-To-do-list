@@ -1,7 +1,7 @@
 export const collatedTasks = [
   { key: "INBOX", name: "Inbox" },
   { key: "TODAY", name: "Today" },
-  { key: "NEXT_7", name: "Next 7 Days" }
+  { key: "NEXT_7", name: "Next 7 Days" },
 ];
 
 //FORM LABELS
@@ -10,7 +10,7 @@ export const labels = {
   email: "Email",
   password: "Password",
   confirmPassword: "Confirm password",
-  terms: "I agree to the Terms of Services and Privacy Policy"
+  terms: "I agree to the Terms of Services and Privacy Policy",
 };
 
 //REVIEWS
@@ -20,22 +20,36 @@ export const reviews = [
     rating: "★★★★★",
     id: 1,
     comment: `Editor’s Choice
-    4.7 stars, 187K+ reviews`
+    4.7 stars, 187K+ reviews`,
   },
   {
     location: "App Store",
     rating: "★★★★★",
     id: 2,
     comment: `Featured app
-    4.8 stars, 30K+ reviews`
+    4.8 stars, 30K+ reviews`,
   },
   {
     location: "Verge",
     rating: "★★★★★",
     id: 3,
     comment: `The best to-do list app
-    right now`
-  }
+    right now`,
+  },
 ];
 
+export const sideNavigation = [
+  {
+    label: "001",
+    name: "todoist",
+  },
+  {
+    label: "002",
+    name: "reviews",
+  },
+  {
+    label: "003",
+    name: "community",
+  },
+];
 //

@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import { showModal } from "../store/actions/ModalActions";
 import Reviews from "../components/Reviews";
 import ArrowForward from "@material-ui/icons/ArrowForward";
+import { sideNavigation } from "../constants/index";
+import SectionNavigation from "../components/SectionNavigation";
 
 const Home = ({ showModal }) => {
   const showSignupMenu = () => {
@@ -57,13 +59,18 @@ const Home = ({ showModal }) => {
             </a>
           </div>
         </section>
+        <div className="sectionNavigation">
+          {sideNavigation.map((el, id) => (
+            <SectionNavigation nav={el} key={id} />
+          ))}
+        </div>
       </div>
     </>
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  showModal: modelType => dispatch(showModal(modelType))
+const mapDispatchToProps = (dispatch) => ({
+  showModal: (modelType) => dispatch(showModal(modelType)),
 });
 
 export default connect(null, mapDispatchToProps)(Home);
