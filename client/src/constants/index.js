@@ -42,14 +42,17 @@ export const sideNavigation = [
   {
     label: "001",
     name: "todoist",
+    to: "hero",
   },
   {
     label: "002",
     name: "reviews",
+    to: "review",
   },
   {
     label: "003",
     name: "community",
+    to: "video",
   },
 ];
 //

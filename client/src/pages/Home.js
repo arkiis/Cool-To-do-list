@@ -7,16 +7,20 @@ import Reviews from "../components/Reviews";
 import ArrowForward from "@material-ui/icons/ArrowForward";
 import { sideNavigation } from "../constants/index";
 import SectionNavigation from "../components/SectionNavigation";
+import * as Scroll from "react-scroll";
+import Link from "../components/Link";
 
 const Home = ({ showModal }) => {
   const showSignupMenu = () => {
     showModal(SIGNUP_MODAL);
   };
+  let ScrollLink = Scroll.Link;
+  let Element = Scroll.Element;
 
   return (
     <>
       <div className="homeWrapper">
-        <section>
+        <Element className="homeImage " name="hero">
           <div className="heroWrapper">
             <h1>Organize your work</h1>
             <a onClick={showSignupMenu}>Get Started</a>
@@ -26,14 +30,14 @@ const Home = ({ showModal }) => {
             src="/image/download.png"
             alt="cartoon cat and rat looking at each other"
           />
-        </section>
+        </Element>
 
-        <section className="reviewSection">
+        <Element className="reviewSection " name="review">
           <div className="reviewBG" />
 
           <Reviews />
-        </section>
-        <section className="videoSection">
+        </Element>
+        <Element className="videoSection " name="video">
           <div className="videoContent">
             <p>
               Todoist has helped
@@ -58,12 +62,12 @@ const Home = ({ showModal }) => {
               <span>Learn more about the Todoist community</span>
             </a>
           </div>
-        </section>
-        <div className="sectionNavigation">
+        </Element>
+        <nav className="sectionNavigation">
           {sideNavigation.map((el, id) => (
             <SectionNavigation nav={el} key={id} />
           ))}
-        </div>
+        </nav>
       </div>
     </>
   );
