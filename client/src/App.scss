@@ -419,6 +419,9 @@ $desktop-mq: 1120px;
   max-width: 144rem;
   margin: 0 auto;
   z-index: 3;
+  @media screen and (max-width: $tablet-mq) {
+    display: none;
+  }
 
   .active-nav {
     color: $generic-bg;
