@@ -29,10 +29,11 @@ const SignUpSchema = Yup.object().shape({
     .required("You need to confirm your password"),
   acceptedTerms: Yup.boolean()
     .required("Required")
-    .oneOf([true], "You must accept the terms and conditions")
+    .oneOf([true], "You must accept the terms and conditions"),
 });
 
 const Register = ({ signUp, loading, error, hideModal, cleanUp }) => {
+  let count = 0;
   useEffect(() => {
     return () => {
       cleanUp();
@@ -53,7 +54,7 @@ const Register = ({ signUp, loading, error, hideModal, cleanUp }) => {
         email: "",
         password: "",
         confirmPassword: "",
-        acceptedTerms: false
+        acceptedTerms: false,
       }}
       validationSchema={SignUpSchema}
       onSubmit={async (values, { setSubmitting }) => {
@@ -121,12 +122,12 @@ const Register = ({ signUp, loading, error, hideModal, cleanUp }) => {
 
 const mapStateToProps = ({ auth }) => ({
   loading: auth.loading,
-  error: auth.error
+  error: auth.error,
 });
 const mapDispatchToProps = {
   signUp: signUp,
   hideModal: () => hideModal(),
-  cleanUp: clean
+  cleanUp: clean,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Register);

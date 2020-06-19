@@ -2,6 +2,9 @@ import React from "react";
 import WarningRounded from "@material-ui/icons/WarningRounded";
 
 const Input = ({ label, field, form: { touched, errors }, ...props }) => {
+  console.log("wow", field);
+
+  console.log(field.value);
   return (
     <>
       <label className="label" htmlFor={props.id || props.name}>
@@ -18,4 +21,4 @@ const Input = ({ label, field, form: { touched, errors }, ...props }) => {
   );
 };
 
-export default Input;
+export default React.memo(Input);
