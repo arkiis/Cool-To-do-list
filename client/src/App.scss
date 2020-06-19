@@ -1266,7 +1266,14 @@ header {
     font-size: 13px;
   }
 }
+.testing-wrapper {
+  display: flex;
+  flex-direction: column;
 
+  > span {
+    margin-top: 10px;
+  }
+}
 /* AUTH MODAL
      ============================================ */
 .auth-modal-overlay {

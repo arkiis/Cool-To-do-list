@@ -6,6 +6,7 @@ import LinearProgress from "@material-ui/core/LinearProgress";
 import { Formik, Field, Form } from "formik";
 import * as Yup from "yup";
 import { labels } from "../../constants/index";
+import { history } from "../../history";
 // Actions
 import { signIn, clean } from "../../store/actions/AuthActions";
 import { hideModal } from "../../store/actions/ModalActions";
@@ -19,7 +20,7 @@ const LoginSchema = Yup.object().shape({
     .required("You need an email silly!"),
   password: Yup.string()
     .required("You need a password silly!")
-    .min(8, "Too short")
+    .min(8, "Too short"),
 });
 
 const Login = ({ signIn, loading, error, hideModal, cleanUp }) => {
@@ -40,7 +41,7 @@ const Login = ({ signIn, loading, error, hideModal, cleanUp }) => {
     <Formik
       initialValues={{
         email: "",
-        password: ""
+        password: "",
       }}
       validationSchema={LoginSchema}
       onSubmit={async (values, { setSubmitting }) => {
@@ -65,7 +66,11 @@ const Login = ({ signIn, loading, error, hideModal, cleanUp }) => {
               component={Input}
             />
 
-            <button disabled={!isValid || isSubmitting} type="submit">
+            <button
+              disabled={!isValid || isSubmitting}
+              type="submit"
+              onClick={() => history.push("/home")}
+            >
               Sign in
             </button>
             {loading && (
@@ -78,6 +83,15 @@ const Login = ({ signIn, loading, error, hideModal, cleanUp }) => {
                 {NotificationManager.error({ error })}
               </Message>
             </div>
+            <div className="testing-wrapper">
+              <span>
+                <b>Email:</b> william.fleckenstein@gmail.com
+              </span>
+
+              <span>
+                <b>Password:</b> 12345678
+              </span>
+            </div>
           </Form>
         </Modal>
       )}
@@ -87,12 +101,12 @@ const Login = ({ signIn, loading, error, hideModal, cleanUp }) => {
 
 const mapStateToProps = ({ auth }) => ({
   loading: auth.loading,
-  error: auth.error
+  error: auth.error,
 });
 const mapDispatchToProps = {
   signIn: signIn,
   hideModal: () => hideModal(),
-  cleanUp: clean
+  cleanUp: clean,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Login);
