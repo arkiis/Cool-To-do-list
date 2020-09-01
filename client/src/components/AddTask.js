@@ -13,7 +13,7 @@ const AddTask = ({
   shouldShowMain = false,
   showQuickAddTask,
   setShowQuickAddTask,
-  loggedIn
+  loggedIn,
 }) => {
   const [task, setTask] = useState("");
   const [taskDate, setTaskDate] = useState("");
@@ -22,7 +22,6 @@ const AddTask = ({
   const [showProjectOverlay, setShowProjectOverlay] = useState(false);
   const [showTaskDate, setShowTaskDate] = useState(false);
   const [projectName, setProjectName] = useState("");
-  console.log(project);
 
   const { selectedProject } = useSelectedProjectValue();
   //inspect selectedProject *need to understand better
@@ -34,9 +33,7 @@ const AddTask = ({
     if (projectId === "TODAY") {
       collatedDate = moment().format("DD/MM/YYYY");
     } else if (projectId === "NEXT_7") {
-      collatedDate = moment()
-        .add(7, "days")
-        .format("DD/MM/YYYY");
+      collatedDate = moment().add(7, "days").format("DD/MM/YYYY");
     }
 
     return (
@@ -50,7 +47,7 @@ const AddTask = ({
           projectId,
           task,
           date: collatedDate || taskDate,
-          userId: loggedIn.uid
+          userId: loggedIn.uid,
         })
         .then(() => {
           setTask("");
@@ -114,7 +111,7 @@ const AddTask = ({
             data-testid="add-task-content"
             type="text"
             aria-label="Enter your task"
-            onChange={e => setTask(e.target.value)}
+            onChange={(e) => setTask(e.target.value)}
           />
 
           <div className="added-project">
@@ -173,7 +170,7 @@ const AddTask = ({
 };
 
 const mapStateToProps = ({ firebase }) => ({
-  loggedIn: firebase.auth
+  loggedIn: firebase.auth,
 });
 
 export default connect(mapStateToProps, null)(AddTask);
@@ -182,5 +179,5 @@ AddTask.propTypes = {
   showAddTaskMain: PropTypes.bool,
   shouldShowMain: PropTypes.bool,
   showQuickAddTask: PropTypes.bool,
-  setShowQuickAddTask: PropTypes.func
+  setShowQuickAddTask: PropTypes.func,
 };

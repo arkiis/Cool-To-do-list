@@ -9,8 +9,7 @@ const firebaseConfig = firebase.initializeApp({
   projectId: "todo-app-c854e",
   storageBucket: "todo-app-c854e.appspot.com",
   messagingSenderId: "1053788292617",
-  appId: "1:1053788292617:web:83b1be32d15e070c559ad8"
+  appId: "1:1053788292617:web:83b1be32d15e070c559ad8",
 });
 
 export { firebaseConfig as firebase };
-console.log(process.env.FIREBASE_APIKEY);

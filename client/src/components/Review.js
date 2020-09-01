@@ -1,7 +1,6 @@
 import React from "react";
 
 const Review = ({ ...rest }) => {
-  console.log("rest.comment", rest);
   return (
     <div>
       <p>{rest.location}</p>

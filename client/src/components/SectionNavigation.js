@@ -5,9 +5,7 @@ import Link from "../components/Link";
 let ScrollLink = Scroll.ScrollLink;
 
 const SectionNavigation = ({ nav }) => {
-  const handleClick = () => {
-    console.log("hiiiiiiii");
-  };
+  const handleClick = () => {};
 
   return (
     <button className="navButton" onClick={handleClick}>

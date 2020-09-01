@@ -11,7 +11,7 @@ const AddProject = ({ shouldShow = false, loggedIn }) => {
 
   const projectId = generatePushId();
   const { projects, setProjects } = useProjectsValue();
-  console.log("loggedIn", loggedIn);
+
   const addProject = () =>
     projectName &&
     firebase
@@ -20,7 +20,7 @@ const AddProject = ({ shouldShow = false, loggedIn }) => {
       .add({
         projectId,
         name: projectName,
-        userId: loggedIn.uid
+        userId: loggedIn.uid,
       })
       .then(() => {
         setProjects([...projects]);
@@ -33,7 +33,7 @@ const AddProject = ({ shouldShow = false, loggedIn }) => {
         <div className="add-project__input" data-testid="add-project-inner">
           <input
             value={projectName}
-            onChange={e => setProjectName(e.target.value)}
+            onChange={(e) => setProjectName(e.target.value)}
             className="add-project__name"
             data-testid="project-name"
             type="text"
@@ -76,11 +76,11 @@ const AddProject = ({ shouldShow = false, loggedIn }) => {
 };
 
 const mapStateToProps = ({ firebase }) => ({
-  loggedIn: firebase.auth
+  loggedIn: firebase.auth,
 });
 
 export default connect(mapStateToProps, null)(AddProject);
 
 AddProject.propTypes = {
-  shouldShow: PropTypes.bool
+  shouldShow: PropTypes.bool,
 };

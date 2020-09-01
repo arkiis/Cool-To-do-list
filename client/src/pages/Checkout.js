@@ -10,23 +10,22 @@ const Checkout = ({ price }) => {
     fetch("https://todoist-server.herokuapp.com/charge", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({})
+      body: JSON.stringify({}),
     })
-      .then(function(r) {
+      .then(function (r) {
         return r.json();
       })
-      .then(function(response) {
+      .then(function (response) {
         sessionId = response.id;
-        console.log(response.id);
       });
   });
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault();
     stripe.redirectToCheckout({
-      sessionId: sessionId
+      sessionId: sessionId,
     });
   };
 
