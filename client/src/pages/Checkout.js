@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const Checkout = ({ price }) => {
-  const [isProcessing, setProcessingTo] = useState(false);
-  const [checkoutError, setChecoutError] = useState();
+const Checkout = () => {
+  // const [isProcessing, setProcessingTo] = useState(false);
+  // const [checkoutError, setChecoutError] = useState();
   let sessionId;
-  const stripe = window.Stripe("pk_test_2do6pJchuMIGtZ2cqrLgDjM300sB7DRzbF");
+  const stripe = window.Stripe(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
     fetch("https://todoist-server.herokuapp.com/charge", {
