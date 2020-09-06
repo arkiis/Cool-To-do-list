@@ -21,6 +21,7 @@ const stripePromise = loadStripe("pk_test_2do6pJchuMIGtZ2cqrLgDjM300sB7DRzbF");
 // only load once per page
 
 const App = ({ loggedIn, emailVerified }) => {
+  console.log(process.env);
   let routes;
   if (loggedIn && !emailVerified) {
     routes = (
@@ -61,12 +62,12 @@ const App = ({ loggedIn, emailVerified }) => {
 };
 
 App.propTypes = {
-  darkModeDefault: PropTypes.bool
+  darkModeDefault: PropTypes.bool,
 };
 
 const mapStateToProps = ({ firebase }) => ({
   loggedIn: firebase.auth.uid,
-  emailVerified: firebase.auth.emailVerified
+  emailVerified: firebase.auth.emailVerified,
 });
 
 export default connect(mapStateToProps)(App);

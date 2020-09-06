@@ -13,7 +13,7 @@ import {
   VERIFY_FAIL,
   CLEAN_UP,
   DELETE_START,
-  DELETE_FAIL
+  DELETE_FAIL,
 } from "./type";
 
 /**
@@ -23,7 +23,7 @@ import {
 /**
  * Redux Action to signup user in Firebase
  */
-export const signUp = data => async (
+export const signUp = (data) => async (
   dispatch,
   getState,
   { getFirebase, getFirestore }
@@ -40,14 +40,11 @@ export const signUp = data => async (
     const user = firebase.auth().currentUser;
     await user.sendEmailVerification();
 
-    await firestore
-      .collection("users")
-      .doc(res.user.uid)
-      .set({
-        userName: data.userName
-      });
+    await firestore.collection("users").doc(res.user.uid).set({
+      userName: data.userName,
+    });
     dispatch({
-      type: SIGNUP_USER_SUCCESS
+      type: SIGNUP_USER_SUCCESS,
     });
   } catch (err) {
     dispatch({ type: SIGNUP_USER_FAILURE, payload: err.message });
@@ -56,7 +53,7 @@ export const signUp = data => async (
 };
 
 //Login action creator
-export const signIn = data => async (dispatch, getState, { getFirebase }) => {
+export const signIn = (data) => async (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   dispatch({ type: SIGNUP_USER });
   try {
@@ -73,11 +70,7 @@ export const signOut = () => async (dispatch, getState, { getFirebase }) => {
   const firebase = getFirebase();
   try {
     await firebase.auth().signOut();
-
-    console.log("signout fired!");
-  } catch (err) {
-    console.log(err.message);
-  }
+  } catch (err) {}
 };
 
 /**
@@ -101,7 +94,7 @@ export const verifyEmail = () => async (
 
 //clean up messages
 export const clean = () => ({
-  type: CLEAN_UP
+  type: CLEAN_UP,
 });
 
 //Delete user
@@ -116,10 +109,7 @@ export const deleteUser = () => async (
   const userId = getState().firebase.auth.uid;
   dispatch({ type: DELETE_START });
   try {
-    await firestore
-      .collection("users")
-      .doc(userId)
-      .delete();
+    await firestore.collection("users").doc(userId).delete();
   } catch (err) {
     dispatch({ type: DELETE_FAIL, payload: err.message });
   }

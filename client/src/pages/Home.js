@@ -8,7 +8,6 @@ import ArrowForward from "@material-ui/icons/ArrowForward";
 import { sideNavigation } from "../constants/index";
 import SectionNavigation from "../components/SectionNavigation";
 import * as Scroll from "react-scroll";
-import Link from "../components/Link";
 
 const Home = ({ showModal }) => {
   const showSignupMenu = () => {

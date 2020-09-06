@@ -1,11 +1,10 @@
 import React, { memo } from "react";
 
-const Modal = props => {
-  console.log(props);
+const Modal = (props) => {
   const onOverlayClick = () => {
     props.onClose();
   };
-  const onDialogClick = event => {
+  const onDialogClick = (event) => {
     event.stopPropagation();
   };
 

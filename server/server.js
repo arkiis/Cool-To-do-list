@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
-const stripe = require("stripe")("sk_test_0TIjdtA2bhfhRcxCbR7Hgydx007NsPEBqY");
+const stripe = require("stripe")(process.env.REACT_APP_SECRET_KEY);
 
 if (process.env.NODE_ENV !== "production") require("dotenv").config();
 
@@ -17,7 +17,7 @@ app.use(cors());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "client/build")));
 
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.sendFile(path.join(__dirname, "client/build", "index.html"));
   });
 }
@@ -29,19 +29,18 @@ app.post("/charge", (req, res) => {
       subscription_data: {
         items: [
           {
-            plan: "plan_GtnK4NS2K1Y1ii"
-          }
-        ]
+            plan: "plan_GtnK4NS2K1Y1ii",
+          },
+        ],
       },
       success_url:
         "https://elated-kowalevski-c4248c.netlify.com/premium/success",
-      cancel_url: "https://elated-kowalevski-c4248c.netlify.com/"
+      cancel_url: "https://elated-kowalevski-c4248c.netlify.com/",
     });
     res.send({ id: session.id });
   })();
 });
 
-app.listen(port, err => {
+app.listen(port, (err) => {
   if (err) throw err;
-  console.log("Server running on port" + port);
 });

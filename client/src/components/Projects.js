@@ -8,11 +8,9 @@ export const Projects = ({ activeValue = null }) => {
   const { setSelectedProject } = useSelectedProjectValue();
   const { projects } = useProjectsValue();
 
-  console.log("active", active);
-
   return (
     projects &&
-    projects.map(project => (
+    projects.map((project) => (
       <li
         key={project.projectId}
         data-testid="project-action-parent"
@@ -45,5 +43,5 @@ export const Projects = ({ activeValue = null }) => {
 };
 
 Projects.propTypes = {
-  activeValue: PropTypes.bool
+  activeValue: PropTypes.bool,
 };

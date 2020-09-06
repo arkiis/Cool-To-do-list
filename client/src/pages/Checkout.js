@@ -1,32 +1,31 @@
 import React, { useState, useEffect } from "react";
 
-const Checkout = ({ price }) => {
-  const [isProcessing, setProcessingTo] = useState(false);
-  const [checkoutError, setChecoutError] = useState();
+const Checkout = () => {
+  // const [isProcessing, setProcessingTo] = useState(false);
+  // const [checkoutError, setChecoutError] = useState();
   let sessionId;
-  const stripe = window.Stripe("pk_test_2do6pJchuMIGtZ2cqrLgDjM300sB7DRzbF");
+  const stripe = window.Stripe(process.env.REACT_APP_API_KEY);
 
   useEffect(() => {
     fetch("https://todoist-server.herokuapp.com/charge", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({})
+      body: JSON.stringify({}),
     })
-      .then(function(r) {
+      .then(function (r) {
         return r.json();
       })
-      .then(function(response) {
+      .then(function (response) {
         sessionId = response.id;
-        console.log(response.id);
       });
   });
 
-  const handleClick = e => {
+  const handleClick = (e) => {
     e.preventDefault();
     stripe.redirectToCheckout({
-      sessionId: sessionId
+      sessionId: sessionId,
     });
   };
 

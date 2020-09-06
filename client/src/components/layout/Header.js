@@ -18,7 +18,7 @@ const Header = ({
   setDarkMode,
   loggedIn,
   showModal,
-  emailVerified
+  emailVerified,
 }) => {
   const [shouldShowMain, setShouldShowMain] = useState(false);
   const [showQuickAddTask, setShowQuickAddTask] = useState(false);
@@ -29,7 +29,7 @@ const Header = ({
   const showSideMenu = () => {
     setShowHeaderSidebar(!showHeaderSidebar);
   };
-  const closeSidebar = e => {
+  const closeSidebar = (e) => {
     if (e.target.id === "sidebar") {
       showSideMenu();
     }
@@ -45,8 +45,6 @@ const Header = ({
   };
 
   if (loggedIn.uid) {
-    console.log("loggedIn.uid", loggedIn);
-    console.log("firebase", firebase);
     links = (
       <>
         <li data-testid="quick-add-task-action" className="settings__add">
@@ -110,7 +108,7 @@ const Header = ({
         </nav>
         <div
           id="sidebar"
-          onClick={e => closeSidebar(e)}
+          onClick={(e) => closeSidebar(e)}
           className={`${showHeaderSidebar && "headerSidebarOverlay"}`}
         >
           {!loggedIn.uid && (
@@ -125,13 +123,13 @@ const Header = ({
   );
 };
 
-const mapDispatchToProps = dispatch => ({
-  showModal: modelType => dispatch(showModal(modelType))
+const mapDispatchToProps = (dispatch) => ({
+  showModal: (modelType) => dispatch(showModal(modelType)),
 });
 
 export default connect(null, mapDispatchToProps)(Header);
 
 Header.propTypes = {
   darkMode: PropTypes.bool.isRequired,
-  setDarkMode: PropTypes.func.isRequired
+  setDarkMode: PropTypes.func.isRequired,
 };

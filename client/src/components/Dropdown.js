@@ -18,7 +18,7 @@ const Dropdown = ({ loggedIn }) => {
   const onMouseMenuHandler = () => {
     setProfileMenu(!profileMenu);
   };
-  console.log(loggedIn.uid);
+
   useEffect(() => {
     firebase
       .firestore()
@@ -30,7 +30,6 @@ const Dropdown = ({ loggedIn }) => {
           setName(doc.data());
         } else {
           // doc.data() will be undefined in this case
-          console.log("No such document!");
         }
       });
   }, []);
